@@ -1,65 +1,42 @@
-<!-- ============================================================
-SAI VIGNESH RAYAL · GITHUB PROFILE
-Premium editorial system: Deep Crimson + Antique Gold + Charcoal
-
-Important:
-- Historical impact is shown as a static visual ledger.
-- Live GitHub activity uses dynamic cards.
-- Modern security terms are separated from résumé-backed experience.
-============================================================= -->
-
 <p align="center">
-  <img src="./assets/masthead.png" width="100%" alt="Sai Vignesh Rayal — Cybersecurity Engineer, Cloud Security" />
+  <img src="./assets/hero.png" width="100%" alt="Sai Vignesh Rayal — Cybersecurity Engineer, Cloud Security" />
 </p>
 
 <p align="center">
-  <sub><strong>SECURITY ENGINEERING · CLOUD SECURITY · AUTOMATION · RISK & COMPLIANCE</strong></sub>
+  <img src="https://img.shields.io/badge/AZURE-3B0F14?style=for-the-badge&logo=microsoftazure&logoColor=ECE4D7" alt="Azure" />
+  <img src="https://img.shields.io/badge/AWS-5A161E?style=for-the-badge&logo=amazonaws&logoColor=ECE4D7" alt="AWS" />
+  <img src="https://img.shields.io/badge/TERRAFORM-3B0F14?style=for-the-badge&logo=terraform&logoColor=D3BF98" alt="Terraform" />
+  <img src="https://img.shields.io/badge/POWERSHELL-5A161E?style=for-the-badge&logo=powershell&logoColor=ECE4D7" alt="PowerShell" />
 </p>
 
-<p align="center">
-  <a href="https://github.com/Saivignesh-1177">
-    <img src="https://img.shields.io/badge/GitHub-Saivignesh--1177-141414?style=flat-square&logo=github&logoColor=white&labelColor=7A1616" />
-  </a>
-  <img src="https://img.shields.io/badge/AZURE-7A1616?style=flat-square&logo=microsoftazure&logoColor=white" />
-  <img src="https://img.shields.io/badge/AWS-C6A15B?style=flat-square&logo=amazonaws&logoColor=141414" />
-  <img src="https://img.shields.io/badge/TERRAFORM-7A1616?style=flat-square&logo=terraform&logoColor=white" />
-  <img src="https://img.shields.io/badge/POWERSHELL-C6A15B?style=flat-square&logo=powershell&logoColor=141414" />
-</p>
+<p align="center"><sub><strong>CLOUD SECURITY · SECURITY ENGINEERING · AUTOMATION · RISK & COMPLIANCE</strong></sub></p>
 
 ---
 
-# THE LEAD
+## ABOUT
 
-### **Security belongs in the architecture.**
+### Security belongs in the architecture.
 
 Cybersecurity Engineer with **5+ years of experience** across **Azure, AWS, and Microsoft 365**, focused on cloud security, infrastructure protection, vulnerability and risk management, incident response, security automation, endpoint security, compliance, and operational resilience.
 
-I work at the intersection of:
+My work sits at the intersection of:
 
-`CLOUD` · `IDENTITY` · `SECURITY ENGINEERING` · `AUTOMATION` · `GOVERNANCE`
+<table>
+<tr>
+<td align="center"><strong>01<br>CLOUD</strong><br>Azure · AWS</td>
+<td align="center"><strong>02<br>SECURITY</strong><br>Identity · Threat · Data</td>
+<td align="center"><strong>03<br>ENGINEERING</strong><br>IaC · Automation · DevSecOps</td>
+<td align="center"><strong>04<br>GOVERNANCE</strong><br>Risk · Controls · Compliance</td>
+</tr>
+</table>
 
 > **Design securely. Automate deliberately. Detect continuously. Respond decisively.**
 
 ---
 
-# THE SECURITY MAP
+# THE SECURITY STACK
 
-A deliberate progression from fundamentals to architecture.
-
-| LAYER | FOCUS |
-|---|---|
-| **01 · Foundations** | Networking · Linux · Windows · Hardening · Logging · Access Control |
-| **02 · Cloud Infrastructure** | Azure · AWS · Compute · Network · Storage · Database Security |
-| **03 · Identity & Data** | IAM · RBAC · MFA · Least Privilege · DLP · Encryption |
-| **04 · Cloud Posture & Workloads** | CSPM · CWPP · CNAPP · CIEM · DSPM · Containers |
-| **05 · DevSecOps** | Secure SDLC · SAST · SCA · IaC Security · SBOM · Secrets |
-| **06 · Detection & Response** | SIEM · XDR · Threat Intelligence · Incident Response · Hunting |
-| **07 · GRC** | Risk · Control Mapping · Audit Readiness · NIST · CIS · ISO |
-| **08 · Architecture** | Zero Trust · Cloud-Native Security · Resilience · AI Security |
-
----
-
-# THE ENGINEERING STACK
+A practical progression from the foundations of a secure environment to modern cloud-security architecture.
 
 <details>
 <summary><strong>01 · SECURITY FOUNDATIONS</strong></summary>
@@ -69,7 +46,7 @@ A deliberate progression from fundamentals to architecture.
 `Hardening` · `Configuration Baselines` · `Patch Management`  
 `Logging` · `Monitoring` · `Access Control` · `Least Privilege`
 
-**Security practice**
+**Core practice**
 
 `Vulnerability Management` · `Security Assessments` · `Risk Analysis`  
 `Threat Management` · `Data Protection` · `Endpoint Security`
@@ -79,23 +56,20 @@ A deliberate progression from fundamentals to architecture.
 <details>
 <summary><strong>02 · CLOUD INFRASTRUCTURE SECURITY</strong></summary>
 
-**Azure**
-
+**Azure**  
 `Azure VMs` · `Azure Networking` · `Azure Storage` · `Azure SQL`
 
-**AWS**
-
+**AWS**  
 `EC2` · `EKS` · `VPC` · `S3` · `RDS`
 
-**Controls**
-
+**Security controls**  
 `Network Security Groups` · `Security Groups` · `Private Connectivity`  
 `Load Balancing` · `Auto Scaling` · `Secure Configuration`
 
 </details>
 
 <details>
-<summary><strong>03 · IDENTITY · ACCESS · DATA</strong></summary>
+<summary><strong>03 · IDENTITY · DATA · ENDPOINT SECURITY</strong></summary>
 
 **Identity & access**
 
@@ -110,16 +84,16 @@ A deliberate progression from fundamentals to architecture.
 
 **Microsoft security / endpoint**
 
-`Microsoft Intune` · `SCCM` · `Microsoft Defender`  
-`Microsoft 365 Security` · `Exchange Online` · `SharePoint Online`  
-`Teams` · `OneDrive`
+`Microsoft 365 Security` · `Microsoft Defender`  
+`Microsoft Intune` · `SCCM` · `Exchange Online`  
+`SharePoint Online` · `Teams` · `OneDrive`
 
 </details>
 
 <details>
-<summary><strong>04 · CLOUD POSTURE · WORKLOAD SECURITY</strong></summary>
+<summary><strong>04 · CLOUD POSTURE · WORKLOAD PROTECTION</strong></summary>
 
-**Modern security domains**
+**Cloud-security domains**
 
 `CSPM` · `CWPP` · `CNAPP` · `CIEM` · `DSPM`  
 `Container Security` · `Kubernetes Security` · `Runtime Protection`  
@@ -160,7 +134,7 @@ A deliberate progression from fundamentals to architecture.
 </details>
 
 <details>
-<summary><strong>06 · DETECTION · RESPONSE · THREAT OPERATIONS</strong></summary>
+<summary><strong>06 · DETECTION · RESPONSE · OBSERVABILITY</strong></summary>
 
 **Detection**
 
@@ -198,7 +172,7 @@ A deliberate progression from fundamentals to architecture.
 
 `NIST CSF 2.0` · `NIST SP 800-53` · `CIS Controls v8.1`  
 `CIS Benchmarks` · `ISO/IEC 27001:2022` · `ISO/IEC 27002:2022`  
-`CSA Cloud Controls Matrix (CCM) v4.1` · `PCI DSS v4.0.1`  
+`CSA CCM v4.1` · `PCI DSS v4.0.1`  
 `SOC 2 Trust Services Criteria` · `HIPAA` · `GDPR` · `FedRAMP Rev. 5`
 
 **Résumé-backed compliance**
@@ -230,63 +204,101 @@ A deliberate progression from fundamentals to architecture.
 
 ---
 
+# WHAT I BRING
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### CLOUD SECURITY ENGINEERING
+
+Cloud hardening · secure architecture · security controls · regulated-data protection · workload onboarding.
+
+</td>
+<td width="50%" valign="top">
+
+### SECURITY OPERATIONS
+
+Vulnerability management · risk analysis · incident response · monitoring · threat management.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### SECURITY AUTOMATION
+
+Terraform · PowerShell · Ansible · JSON templates · infrastructure as code · repeatable provisioning.
+
+</td>
+<td width="50%" valign="top">
+
+### RESILIENCE & GOVERNANCE
+
+DLP · NIST-based controls · ISO 27001 · GDPR · HIPAA-aligned practices · business continuity · disaster recovery.
+
+</td>
+</tr>
+</table>
+
+---
+
 # THE IMPACT LEDGER
 
 <p align="center">
-  <img src="./assets/impact-ledger.png" width="100%" alt="Documented engineering impact ledger" />
+  <img src="./assets/impact-ledger.png" width="100%" alt="Documented engineering impact" />
 </p>
 
-<sub>Historical outcomes reported in the professional résumé; these figures are not live GitHub telemetry.</sub>
+<p align="center">
+  <sub><strong>Historical engineering outcomes reported in professional experience · not live telemetry</strong></sub>
+</p>
 
 ---
 
 # LIVE GITHUB SIGNAL
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Saivignesh-1177&show_icons=true&hide_border=true&bg_color=141414&title_color=C6A15B&icon_color=8B1E1E&text_color=EDE7D9&ring_color=C6A15B&custom_title=GitHub%20Activity" width="49%" alt="GitHub activity" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Saivignesh-1177&layout=compact&hide_border=true&bg_color=141414&title_color=C6A15B&text_color=EDE7D9&icon_color=8B1E1E&custom_title=Repository%20Languages" width="41%" alt="Repository languages" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Saivignesh-1177&show_icons=true&hide_border=true&bg_color=111110&title_color=D3BF98&icon_color=9A2424&text_color=ECE4D7&ring_color=A88A5A&custom_title=GitHub%20Activity" width="58%" alt="GitHub activity" />
 </p>
 
 <p align="center">
-  <sub>Live cards reflect current GitHub repository activity. The GitHub profile itself remains the authoritative source for contributions.</sub>
+  <sub>Live repository activity. Your GitHub profile remains the authoritative source for contributions.</sub>
 </p>
 
 ---
 
-# THE AUTOMATION DESK
+# THE SECURITY PATH
 
 ```text
-                         SECURITY REQUIREMENT
-                                  │
-                                  ▼
-                         CLOUD ARCHITECTURE
-                                  │
-                   ┌──────────────┴──────────────┐
-                   ▼                             ▼
-                 AZURE                           AWS
-                   │                             │
-                   └──────────────┬──────────────┘
-                                  ▼
-                           TERRAFORM / IaC
-                                  │
-                                  ▼
-                         POLICY + CONTROLS
-                                  │
-                                  ▼
-                       MONITORING + DETECTION
-                                  │
-                                  ▼
-                         INCIDENT RESPONSE
-                                  │
-                                  ▼
-                        RESILIENCE + RECOVERY
+FOUNDATIONS
+     │
+     ▼
+CLOUD INFRASTRUCTURE
+     │
+     ▼
+IDENTITY · DATA · ENDPOINT
+     │
+     ▼
+POSTURE · WORKLOAD PROTECTION
+     │
+     ▼
+DEVSECOPS · SUPPLY CHAIN
+     │
+     ▼
+DETECTION · RESPONSE
+     │
+     ▼
+GOVERNANCE · RISK · COMPLIANCE
+     │
+     ▼
+SECURITY ARCHITECTURE
 ```
 
 ---
 
-# DOCUMENTED FOUNDATION
+# DOCUMENTED EXPERIENCE
 
-These are the areas explicitly represented in the source résumé and form the experience-backed core of this profile:
+The experience-backed core of the profile includes:
 
 `Azure Security` · `AWS Security` · `Microsoft 365 Security`  
 `Cloud Hardening` · `Secure Configuration Baselines`  
@@ -295,21 +307,6 @@ These are the areas explicitly represented in the source résumé and form the e
 `Intune` · `SCCM` · `Endpoint Compliance` · `Patching`  
 `Terraform` · `PowerShell` · `Ansible` · `JSON Templates`  
 `Backup` · `Disaster Recovery` · `Business Continuity`
-
----
-
-# ENGINEERING PRINCIPLES
-
-```yaml
-security:
-  architecture: "security by design"
-  identity: "least privilege"
-  infrastructure: "infrastructure as code"
-  operations: "continuous monitoring"
-  response: "automated where appropriate"
-  governance: "measurable controls"
-  resilience: "recoverable systems"
-```
 
 ---
 
@@ -322,13 +319,20 @@ security:
 
 ---
 
+# CONNECT
+
 <p align="center">
-  <img src="https://img.shields.io/badge/SECURITY-7A1616?style=for-the-badge&labelColor=141414&color=C6A15B" alt="Security" />
-  <img src="https://img.shields.io/badge/CLOUD-C6A15B?style=for-the-badge&labelColor=141414&color=7A1616" alt="Cloud" />
-  <img src="https://img.shields.io/badge/AUTOMATION-7A1616?style=for-the-badge&labelColor=141414&color=C6A15B" alt="Automation" />
-  <img src="https://img.shields.io/badge/RESILIENCE-C6A15B?style=for-the-badge&labelColor=141414&color=7A1616" alt="Resilience" />
+  <a href="https://github.com/Saivignesh-1177">
+    <img src="https://img.shields.io/badge/GITHUB-Saivignesh--1177-111110?style=for-the-badge&logo=github&logoColor=ECE4D7&labelColor=3B0F14" alt="GitHub" />
+  </a>
 </p>
 
 <p align="center">
-  <strong>BUILD SECURE · AUTOMATE DELIBERATELY · ENGINEER FOR RESILIENCE</strong>
+  <sub>Professional profile · cloud security · security engineering</sub>
+</p>
+
+---
+
+<p align="center">
+  <strong>SECURE BY DESIGN · AUTOMATED BY INTENT · BUILT FOR RESILIENCE</strong>
 </p>
