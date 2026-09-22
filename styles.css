@@ -384,13 +384,19 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: .01em;
 }
 .labels--plain li { color: var(--muted); }
 
-.grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.grid {
+  display: grid;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
 .grid--cap { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
 .grid--work { grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
 
 .card {
   background: var(--bg-2);
   padding: 1.6rem 1.5rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   transition: background .4s ease, transform .4s ease;
 }
 .card:hover { background: #1d1919; }
@@ -410,12 +416,15 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: .01em;
 
 .ledger {
   list-style: none; margin: 0; padding: 0;
-  display: grid; gap: 1px; background: var(--border);
-  border: 1px solid var(--border);
+  display: grid;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
 }
 .ledger li {
   background: var(--bg-2); padding: 1.6rem 1.4rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   display: grid; gap: .35rem;
 }
 .ledger__value {
