@@ -1,356 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sai Vignesh Rayal · Cybersecurity Engineer · Cloud Security</title>
-<meta name="description" content="Sai Vignesh Rayal — Cybersecurity Engineer · Cloud Security. Building secure, scalable and resilient cloud environments through security engineering, automation and continuous improvement." />
-<meta name="color-scheme" content="dark" />
-<meta property="og:title" content="Sai Vignesh Rayal · Cybersecurity Engineer · Cloud Security" />
-<meta property="og:description" content="Security belongs in the architecture." />
-<meta property="og:type" content="website" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Sai Vignesh Rayal — Authorization Package SVR-01</title>
+<meta name="description" content="Cybersecurity Engineer — Cloud Security. Five-plus years securing, automating and supporting Azure, AWS and Microsoft 365 — across healthcare research, cloud infrastructure and enterprise endpoint estates. I design access so there is nothing to steal, write the controls as code, and keep the evidence that proves they hold.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/instrument-serif-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
 </head>
-
 <body>
-<a class="skip-link" href="#about">Skip to content</a>
-
-<!-- ============================================================
-     HERO — the vintage intelligence desk environment
-     Layers are ordered back-to-front and driven by script.js
-     ============================================================ -->
-<header class="hero" id="hero">
-  <div class="hero__scene" id="scene" aria-hidden="true">
-
-    <!-- Layer: window + skyline ------------------------------------ -->
-    <div class="layer layer--window" data-depth="0.10">
-      <div class="window">
-        <div class="window__glass">
-          <svg class="skyline" viewBox="0 0 600 260" preserveAspectRatio="xMidYMax slice" role="presentation" focusable="false">
-            <defs>
-              <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#241a1a" />
-                <stop offset="60%" stop-color="#191616" />
-                <stop offset="100%" stop-color="#111110" />
-              </linearGradient>
-            </defs>
-            <rect width="600" height="260" fill="url(#skyGrad)" />
-            <g fill="#1b1717">
-              <rect x="10"  y="140" width="58"  height="120" />
-              <rect x="78"  y="96"  width="42"  height="164" />
-              <rect x="128" y="168" width="70"  height="92" />
-              <rect x="206" y="72"  width="52"  height="188" />
-              <rect x="268" y="132" width="86"  height="128" />
-              <rect x="362" y="104" width="46"  height="156" />
-              <rect x="418" y="158" width="74"  height="102" />
-              <rect x="500" y="118" width="44"  height="142" />
-              <rect x="552" y="176" width="44"  height="84" />
-            </g>
-            <g class="skyline__windows" fill="#A88A5A">
-              <rect x="22"  y="154" width="5" height="7" /><rect x="40" y="172" width="5" height="7" />
-              <rect x="88"  y="112" width="5" height="7" /><rect x="104" y="140" width="5" height="7" />
-              <rect x="216" y="92"  width="5" height="7" /><rect x="238" y="126" width="5" height="7" />
-              <rect x="286" y="150" width="5" height="7" /><rect x="320" y="186" width="5" height="7" />
-              <rect x="374" y="122" width="5" height="7" /><rect x="392" y="166" width="5" height="7" />
-              <rect x="436" y="178" width="5" height="7" /><rect x="466" y="204" width="5" height="7" />
-              <rect x="512" y="140" width="5" height="7" /><rect x="530" y="180" width="5" height="7" />
-            </g>
-          </svg>
-        </div>
-        <div class="window__frame"></div>
-      </div>
-    </div>
-
-    <!-- Layer: aged world map with security telemetry -------------- -->
-    <div class="layer layer--map" data-depth="0.18">
-      <figure class="worldmap">
-        <img class="worldmap__img" src="assets/world-map.svg" alt="Aged world map used as a decorative backdrop" loading="lazy" decoding="async" width="820" height="420" />
-        <canvas class="worldmap__canvas" id="map-canvas" width="820" height="420"></canvas>
-        <figcaption class="worldmap__note">ABSTRACT SECURITY TELEMETRY · SIMULATED VISUALIZATION</figcaption>
-      </figure>
-    </div>
-
-    <!-- Layer: pinned documents and handwritten notes -------------- -->
-    <div class="layer layer--wall" data-depth="0.26">
-      <div class="paper paper--doc" data-drift="1">
-        <span class="paper__stamp">CONFIDENTIAL · INTERNAL</span>
-        <span class="paper__title">CLOUD ARCHITECTURE SKETCH</span>
-        <svg class="paper__sketch" viewBox="0 0 180 96" role="presentation" focusable="false">
-          <g fill="none" stroke="#5b4f43" stroke-width="1.2">
-            <rect x="8" y="16" width="52" height="30" rx="3" />
-            <rect x="70" y="8" width="46" height="24" rx="3" />
-            <rect x="70" y="46" width="46" height="24" rx="3" />
-            <rect x="128" y="26" width="44" height="30" rx="3" />
-            <path d="M60 31 H70 M116 20 H128 M116 58 H128 M93 32 V46" />
-            <path d="M18 62 h130" stroke-dasharray="3 5" />
-          </g>
-        </svg>
-      </div>
-      <div class="paper paper--note" data-drift="2">
-        <span class="note__hand">least privilege &gt; trust</span>
-        <span class="note__hand note__hand--small">verify explicitly · assume breach</span>
-      </div>
-      <div class="paper paper--label" data-drift="3">IAC BASELINE v4</div>
-    </div>
-
-    <!-- Layer: desk surface, objects ------------------------------- -->
-    <div class="layer layer--desk" data-depth="0.40">
-      <div class="desk">
-        <div class="desk__surface"></div>
-
-        <!-- mechanical desk lamp -->
-        <div class="object object--lamp" id="lamp">
-          <div class="lamp__light"></div>
-          <svg class="lamp__body" viewBox="0 0 120 170" role="presentation" focusable="false">
-            <defs>
-              <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#D3BF98" stop-opacity=".34" />
-                <stop offset="100%" stop-color="#A88A5A" stop-opacity="0" />
-              </linearGradient>
-            </defs>
-            <path class="lamp__cone" d="M26 62 L4 158 L74 158 L50 62 Z" fill="url(#cone)" />
-            <g fill="none" stroke="#A88A5A" stroke-width="3" stroke-linecap="round">
-              <path d="M100 158 H62" stroke-width="6" />
-              <path d="M84 156 L76 98" />
-              <path d="M76 98 L44 66" />
-            </g>
-            <path d="M44 66 L20 48 L52 24 L62 56 Z" fill="#241c1a" stroke="#A88A5A" stroke-width="2" stroke-linejoin="round" />
-            <path d="M44 66 L62 56" stroke="#D3BF98" stroke-width="2" opacity=".8" />
-            <circle cx="76" cy="98" r="4.5" fill="#A88A5A" />
-          </svg>
-        </div>
-
-        <!-- brass compass -->
-        <div class="object object--compass">
-          <svg class="compass" viewBox="0 0 120 120" role="img" aria-label="Brass compass">
-            <circle cx="60" cy="60" r="54" fill="#191616" stroke="#A88A5A" stroke-width="3" />
-            <circle cx="60" cy="60" r="44" fill="none" stroke="#3A3030" stroke-width="1" />
-            <g stroke="#A88A5A" stroke-width="1.4" opacity=".7">
-              <path d="M60 10 V22 M60 98 V110 M10 60 H22 M98 60 H110" />
-            </g>
-            <text x="60" y="34" text-anchor="middle" fill="#D3BF98" font-size="11" font-family="Inter, sans-serif">N</text>
-            <g id="compass-needle" style="transform-origin:60px 60px">
-              <path d="M60 22 L67 60 L60 98 L53 60 Z" fill="#5A161E" />
-              <path d="M60 22 L67 60 L53 60 Z" fill="#D3BF98" />
-            </g>
-            <circle cx="60" cy="60" r="4" fill="#A88A5A" />
-          </svg>
-        </div>
-
-        <!-- leather-bound security books -->
-        <div class="object object--books">
-          <div class="book book--a"><span>CRYPTOGRAPHY</span></div>
-          <div class="book book--b"><span>ZERO TRUST</span></div>
-          <div class="book book--c"><span>NIST 800-53</span></div>
-        </div>
-
-        <!-- subtle laptop with terminal + network graph -->
-        <div class="object object--laptop">
-          <div class="laptop__screen">
-            <div class="screen__head">
-              <span class="screen__dot"></span>
-              <span class="screen__title">SECURITY OPERATIONS · SIMULATED VISUALIZATION</span>
-            </div>
-            <canvas class="screen__graph" id="graph-canvas" width="420" height="180"></canvas>
-            <div class="screen__terminal" id="terminal">
-              <div class="terminal__line" id="terminal-line"></div>
-            </div>
-          </div>
-          <div class="laptop__base"></div>
-        </div>
-
-        <!-- coffee, pen, paper labels -->
-        <div class="object object--cup">
-          <div class="cup__body"></div>
-          <div class="cup__handle"></div>
-          <div class="cup__steam"></div>
-        </div>
-        <div class="object object--pen">
-          <svg viewBox="0 0 160 24" role="presentation" focusable="false">
-            <path d="M6 16 L108 6 L152 2 L120 14 L14 22 Z" fill="#191616" stroke="#A88A5A" stroke-width="1.2" />
-            <path d="M108 6 L152 2 L120 14 Z" fill="#A88A5A" opacity=".55" />
-          </svg>
-        </div>
-        <div class="object object--tag" data-drift="4">EVIDENCE · 07</div>
-      </div>
-    </div>
-
-    <!-- Layer: atmosphere ------------------------------------------ -->
-    <canvas class="layer layer--dust" id="dust-canvas"></canvas>
-    <div class="layer layer--grain"></div>
-    <div class="layer layer--scanlines"></div>
-    <div class="layer layer--vignette"></div>
-  </div>
-
-  <!-- Hero copy ---------------------------------------------------- -->
-  <div class="hero__content">
-    <p class="hero__eyebrow">DOSSIER · No. 1177</p>
-    <h1 class="hero__name">Sai Vignesh Rayal</h1>
-    <p class="hero__role">CYBERSECURITY ENGINEER <span class="sep">·</span> CLOUD SECURITY</p>
-    <hr class="rule" />
-    <p class="hero__statement">&ldquo;Security belongs in the architecture.&rdquo;</p>
-    <p class="hero__support">Building secure, scalable and resilient cloud environments through security engineering, automation and continuous improvement.</p>
-    <p class="hero__descriptor">5+ YEARS · AZURE · AWS · MICROSOFT SECURITY · AUTOMATION · RISK</p>
-
-    <dl class="hero__meta">
-      <div class="meta">
-        <dt>LOCAL TIME</dt>
-        <dd><time id="clock" datetime="">--:--:--</time></dd>
-      </div>
-      <div class="meta">
-        <dt>PUBLIC REPOSITORIES</dt>
-        <dd data-gh="repos">Signal unavailable</dd>
-      </div>
-      <div class="meta">
-        <dt>FOLLOWERS</dt>
-        <dd data-gh="followers">Signal unavailable</dd>
-      </div>
-    </dl>
-  </div>
-
-  <a class="hero__scroll" href="#about"><span>CONTINUE</span></a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <a class="mark" href="#top" aria-label="Top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-linecap="square" role="img" aria-label="SVR seal"><circle cx="20" cy="20" r="13" stroke-width=".6"/><path d="M20.00 4.80L20.00 1.80M31.88 10.52L34.23 8.65M34.82 23.38L37.74 24.05M26.60 33.69L27.90 36.40M13.40 33.69L12.10 36.40M5.18 23.38L2.26 24.05M8.12 10.52L5.77 8.65" stroke-width="1.2"/><path d="M14.5 16H11.5A2 2 0 0 0 11.5 20H12.5A2 2 0 0 1 12.5 24H9.5M16.5 16L20 24L23.5 16M25.5 24V16H28.5A2 2 0 0 1 28.5 20H25.5M28 20L30.5 24" stroke-width="1.15"/></svg></a>
+  <dl class="control-block">
+    <div><dt>Package</dt><dd>SVR-01</dd></div>
+    <div><dt>Revision</dt><dd>1.0</dd></div>
+    <div><dt>Dated</dt><dd><time datetime="2026-10-28">2026-10-28</time></dd></div>
+    <div><dt>Statements</dt><dd>21 · all sourced</dd></div>
+  </dl>
 </header>
 
-<main>
-<!-- ============================ SECTION 1 ===================== -->
-<section class="section" id="about">
-  <p class="section__index">SECTION 01</p>
-  <h2 class="section__title">About</h2>
-  <div class="prose">
-    <p>Cybersecurity engineer with 5+ years across Azure and AWS, focused on cloud security engineering, identity and data protection, vulnerability and risk management, incident response and security automation.</p>
-    <p>The work sits where architecture meets operations: designing controls that hold under change, automating them so they stay consistent, and measuring whether they actually reduce exposure.</p>
-  </div>
-  <ul class="labels">
-    <li>CLOUD SECURITY</li><li>IDENTITY &amp; ACCESS</li><li>THREAT DETECTION</li>
-    <li>DEVSECOPS</li><li>INFRASTRUCTURE AS CODE</li><li>MONITORING &amp; RESPONSE</li>
-    <li>GOVERNANCE &amp; RISK</li>
-  </ul>
+<main id="main">
+<section class="hero" id="top">
+  <p class="eyebrow">§1 · System identification</p>
+  <h1>Sai Vignesh Rayal</h1>
+  <p class="role">Cybersecurity Engineer — Cloud Security</p>
+  <p class="summary">Five-plus years securing, automating and supporting Azure, AWS and Microsoft 365 — across healthcare research, cloud infrastructure and enterprise endpoint estates. I design access so there is nothing to steal, write the controls as code, and keep the evidence that proves they hold.</p>
+  <p class="note">Structured like a System Security Plan. Every statement cites its source; outcome figures are as reported in the résumé, not live telemetry.</p>
 </section>
 
-<!-- ============================ SECTION 2 ===================== -->
-<section class="section" id="capabilities">
-  <p class="section__index">SECTION 02</p>
-  <h2 class="section__title">Security Capabilities</h2>
-  <div class="grid grid--cap">
-    <article class="card"><h3>Foundation</h3><p>Networking · TCP/IP · DNS · TLS · Linux &amp; Windows hardening · segmentation · configuration baselines · patch management · logging.</p></article>
-    <article class="card"><h3>Cloud Infrastructure</h3><p>Azure VMs, networking, storage, SQL · AWS EC2, EKS, VPC, S3, RDS · NSGs and security groups · private connectivity · secure configuration.</p></article>
-    <article class="card"><h3>Identity &amp; Access</h3><p>IAM · RBAC · MFA · Conditional Access · PAM · workload and managed identities · service principals · access reviews · least privilege.</p></article>
-    <article class="card"><h3>Data Security</h3><p>DLP · data classification · encryption at rest and in transit · key management · secrets management.</p></article>
-    <article class="card"><h3>Cloud Posture</h3><p>CSPM · CIEM · DSPM · misconfiguration management · policy enforcement · security benchmarks · attack path analysis.</p></article>
-    <article class="card"><h3>Workload Protection</h3><p>CWPP · CNAPP · container and Kubernetes security · runtime protection · endpoint compliance via Intune and SCCM.</p></article>
-    <article class="card"><h3>DevSecOps</h3><p>Secure SDLC · threat modeling · SAST, DAST, SCA · IaC security · policy as code · SBOM · secrets detection · CI/CD and GitHub Actions security with OIDC.</p></article>
-    <article class="card"><h3>Detection &amp; Response</h3><p>SIEM · XDR · SOAR · detection engineering · incident triage, containment, eradication, recovery · root cause analysis · threat hunting.</p></article>
-    <article class="card"><h3>Governance / Risk / Compliance</h3><p>NIST CSF 2.0 · NIST SP 800-53 · CIS Controls v8.1 · ISO/IEC 27001:2022 · PCI DSS v4.0.1 · SOC 2 · HIPAA-aligned practices · GDPR · audit readiness.</p></article>
-    <article class="card"><h3>Security Architecture</h3><p>Zero Trust · secure-by-design · hybrid and multicloud security · guardrails · resilience, continuity and disaster recovery.</p></article>
-  </div>
-  <p class="footnote">Microsoft security ecosystem: Microsoft Defender for Cloud · Microsoft Sentinel · Defender XDR · Microsoft Entra ID · Azure Policy · Key Vault · Azure Monitor · Microsoft 365 Security · Intune.</p>
+<section class="scope" aria-labelledby="scope-h">
+  <h2 id="scope-h"><span>§2</span> Roles in scope</h2>
+  <ul class="roles"><li>Cloud Security Engineer</li><li>Identity &amp; Access Management Engineer</li><li>DevSecOps Engineer</li><li>GRC / Security Compliance Engineer</li><li>Microsoft security roles — architecture, operations, identity, Azure security</li></ul>
 </section>
 
-<!-- ============================ SECTION 3 ===================== -->
-<section class="section" id="impact">
-  <p class="section__index">SECTION 03</p>
-  <h2 class="section__title">Documented Impact</h2>
-  <p class="section__kicker">HISTORICAL ENGINEERING OUTCOMES · reported from professional experience · not live metrics</p>
-  <ul class="ledger">
-    <li><span class="ledger__value">+35%</span><span class="ledger__label">security control coverage</span></li>
-    <li><span class="ledger__value">+30%</span><span class="ledger__label">secure workload onboarding</span></li>
-    <li><span class="ledger__value">−25%</span><span class="ledger__label">high-risk misconfiguration exposure</span></li>
-    <li><span class="ledger__value">+20%</span><span class="ledger__label">incident response turnaround</span></li>
-    <li><span class="ledger__value">−30%</span><span class="ledger__label">manual cloud administration</span></li>
-    <li><span class="ledger__value">−40%</span><span class="ledger__label">infrastructure automation effort</span></li>
-    <li><span class="ledger__value">500+</span><span class="ledger__label">managed endpoints</span></li>
-    <li><span class="ledger__value">99.9%</span><span class="ledger__label">data availability</span></li>
-  </ul>
-</section>
-
-<!-- ============================ SECTION 4 ===================== -->
-<section class="section" id="work">
-  <p class="section__index">SECTION 04</p>
-  <h2 class="section__title">Featured Work</h2>
-  <p class="section__kicker">PLACEHOLDERS · replace with real repositories before publishing</p>
-  <div class="grid grid--work">
-    <!-- To publish a project: change the name, purpose, technology, domain and href. -->
-    <article class="card card--work">
-      <h3>PROJECT_01</h3>
-      <p class="card__purpose">ONE_SENTENCE_PURPOSE</p>
-      <p class="card__meta"><span>TECHNOLOGY</span><span>SECURITY DOMAIN</span></p>
-      <a class="card__link" href="https://github.com/Saivignesh-1177" rel="noopener">VIEW REPOSITORY →</a>
-    </article>
-    <article class="card card--work">
-      <h3>PROJECT_02</h3>
-      <p class="card__purpose">ONE_SENTENCE_PURPOSE</p>
-      <p class="card__meta"><span>TECHNOLOGY</span><span>SECURITY DOMAIN</span></p>
-      <a class="card__link" href="https://github.com/Saivignesh-1177" rel="noopener">VIEW REPOSITORY →</a>
-    </article>
-    <article class="card card--work">
-      <h3>PROJECT_03</h3>
-      <p class="card__purpose">ONE_SENTENCE_PURPOSE</p>
-      <p class="card__meta"><span>TECHNOLOGY</span><span>SECURITY DOMAIN</span></p>
-      <a class="card__link" href="https://github.com/Saivignesh-1177" rel="noopener">VIEW REPOSITORY →</a>
-    </article>
+<section class="implementation" aria-labelledby="impl-h">
+  <h2 id="impl-h"><span>§3</span> Control implementation</h2>
+  <div class="split">
+    <nav class="rail" aria-label="Control families"><ol><li><a href="#c1"><span>AC · IA</span>Identity &amp; Access</a></li><li><a href="#c2"><span>SC · CM</span>Cloud Boundary &amp; Configuration</a></li><li><a href="#c3"><span>RA · CA</span>Risk &amp; Assessment</a></li><li><a href="#c4"><span>AU · SI-4 · IR</span>Detection &amp; Response</a></li><li><a href="#c5"><span>SA · SR</span>DevSecOps &amp; Supply Chain</a></li><li><a href="#c6"><span>SI-2 · AC-4</span>Data Protection &amp; Endpoint</a></li><li><a href="#c7"><span>PL · PM · CP</span>Governance, Risk &amp; Compliance</a></li></ol></nav>
+    <div class="controls"><article class="control" id="c1"><header><p class="fam">§3.1 · AC · IA</p><h3>Identity &amp; Access</h3><p class="stmt">Workload access built so no reusable credential exists.</p></header><ol><li><p>Managed identity scoped to Key Vault Secrets User on exactly one secret; a decoy secret proves the boundary with a 403.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Secretless CI/CD through GitHub OIDC, with an ABAC condition limiting which role the pipeline can grant.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Access-control reviews; cloud solutions integrated securely while supporting researcher access needs.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li></ol></article><article class="control" id="c2"><header><p class="fam">§3.2 · SC · CM</p><h3>Cloud Boundary &amp; Configuration</h3><p class="stmt">Networks default-deny; configuration is code and is tested before it exists.</p></header><ol><li><p>Key Vault reachable only from the workload subnet; 31 tests run against the compiled template before deploy.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Sealed AWS lab network: no internet gateway, no NAT, no public IPs, quarantine subnet, guardrail tests in CI.</p><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></li><li><p>Secured Azure VMs, networking and storage while reducing infrastructure cost 15%.</p><span class="src">Résumé · Kgate · 2023–25</span></li><li><p>Designed AWS architectures on EC2, EKS, VPC, S3 and RDS with security controls, load balancing and auto-scaling.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li></ol></article><article class="control" id="c3"><header><p class="fam">§3.3 · RA · CA</p><h3>Risk &amp; Assessment</h3><p class="stmt">Find the misconfiguration before an attacker does, and write down what remains.</p></header><ol><li><p>Vulnerability testing and security assessments across infrastructure, access and configuration — high-risk misconfiguration exposure down 25%.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>STRIDE threat model (T01–T15), eight adversary-emulation scenarios, findings fixed and re-tested or formally risk-accepted.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li></ol></article><article class="control" id="c4"><header><p class="fam">§3.4 · AU · SI-4 · IR</p><h3>Detection &amp; Response</h3><p class="stmt">Every read, denial and permission change is logged, alerted and rehearsed.</p></header><ol><li><p>KQL hunts for secret reads, denials, unexpected networks, RBAC changes and log tampering; incident runbooks for token theft and escalation.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Monitored cloud systems for irregular behaviour and supported triage, containment and remediation — response turnaround 20% faster.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>VPC flow logs on all traffic to encrypted storage; sensor subnet reserved for Zeek and Suricata.</p><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></li></ol></article><article class="control" id="c5"><header><p class="fam">§3.5 · SA · SR</p><h3>DevSecOps &amp; Supply Chain</h3><p class="stmt">The pipeline is a security control, not a delivery convenience.</p></header><ol><li><p>CI runs Bicep lint with security rules as errors, Checkov, Gitleaks over full history and traceability tests.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Terraform and PowerShell provisioning — manual effort down 40%, deployments consistent.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li><li><p>Azure administration automated with PowerShell and JSON templates — manual effort down 30%.</p><span class="src">Résumé · Kgate · 2023–25</span></li></ol></article><article class="control" id="c6"><header><p class="fam">§3.6 · SI-2 · AC-4</p><h3>Data Protection &amp; Endpoint</h3><p class="stmt">Regulated data stays classified, contained and on compliant devices.</p></header><ol><li><p>Microsoft Security &amp; Compliance Center policies — DLP and threat-management controls — and Defender across Microsoft 365.</p><span class="src">Résumé · Kgate · 2023–25</span></li><li><p>Intune and SCCM across 500+ devices: compliance enforcement, patching, device policy — security incidents down 25%.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li></ol></article><article class="control" id="c7"><header><p class="fam">§3.7 · PL · PM · CP</p><h3>Governance, Risk &amp; Compliance</h3><p class="stmt">Controls are mapped, traceable, and a build fails if a threat loses its control.</p></header><ol><li><p>Security requirements and control mappings for healthcare and research platforms — documented control coverage up 35%.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>29 NIST SP 800-53 Rev 5 controls mapped to implementation, test, evidence and threat; crosswalk to CSF 2.0, SP 800-207, CIS and MCSB.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Standards, runbooks, continuity and disaster-recovery procedures — audit readiness and resilience up 30%; HIPAA-aligned and NIST-based practice.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>Backup and DR for Azure resources and SQL databases supporting 99.9% availability.</p><span class="src">Résumé · Kgate · 2023–25</span></li></ol></article></div>
   </div>
 </section>
 
-<!-- ============================ SECTION 5 ===================== -->
-<section class="section" id="github">
-  <p class="section__index">SECTION 05</p>
-  <h2 class="section__title">Live GitHub</h2>
-  <p class="section__kicker">PUBLIC DATA FETCHED FROM THE GITHUB REST API AT PAGE LOAD</p>
-  <dl class="signal">
-    <div class="meta"><dt>PUBLIC REPOSITORIES</dt><dd data-gh="repos">Signal unavailable</dd></div>
-    <div class="meta"><dt>FOLLOWERS</dt><dd data-gh="followers">Signal unavailable</dd></div>
-    <div class="meta"><dt>TOTAL PUBLIC STARS</dt><dd data-gh="stars">Signal unavailable</dd></div>
-    <div class="meta"><dt>PRIMARY LANGUAGES</dt><dd data-gh="languages">Signal unavailable</dd></div>
-  </dl>
-  <ol class="repos" id="repo-list">
-    <li class="repos__empty">Signal unavailable</li>
-  </ol>
+<section aria-labelledby="ev-h">
+  <h2 id="ev-h"><span>§4</span> Evidence</h2>
+  <ul class="evidence"><li><h3><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></h3><p>7 control statements cite this repository.</p></li><li><h3><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></h3><p>2 control statements cite this repository.</p></li></ul>
 </section>
 
-<!-- ============================ SECTION 6 ===================== -->
-<section class="section" id="principles">
-  <p class="section__index">SECTION 06</p>
-  <h2 class="section__title">Engineering Principles</h2>
-  <ol class="principles">
-    <li>Security by design</li><li>Least privilege</li><li>Infrastructure as code</li>
-    <li>Continuous monitoring</li><li>Automated response where appropriate</li>
-    <li>Measurable controls</li><li>Resilience</li>
-  </ol>
+<section aria-labelledby="hist-h">
+  <h2 id="hist-h"><span>§5</span> Operating history</h2>
+  <ol class="history"><li><p class="when">Apr 2025 — Apr 2026</p><div><h3>Cybersecurity Engineer II / Cloud Security Engineer</h3><p>University of Wisconsin–Madison · School of Medicine and Public Health · Madison, WI</p></div></li><li><p class="when">Apr 2023 — Mar 2025</p><div><h3>Cloud Engineer — Security &amp; Infrastructure</h3><p>Kgate · Houston, TX</p></div></li><li><p class="when">Feb 2020 — Jun 2022</p><div><h3>Microsoft Cloud Solution Engineer — Security, Compliance &amp; Endpoint</h3><p>Tata Consultancy Services · Bengaluru, India</p></div></li></ol>
 </section>
 
-<!-- ============================ SECTION 7 ===================== -->
-<section class="section" id="education">
-  <p class="section__index">SECTION 07</p>
-  <h2 class="section__title">Education</h2>
-  <div class="education">
-    <h3>Master of Artificial Intelligence</h3>
-    <ul class="labels labels--plain">
-      <li>Cloud Computing</li><li>Networking</li><li>Computer Algorithms</li><li>Software Development with AI</li>
-    </ul>
-  </div>
+<section aria-labelledby="poam-h">
+  <h2 id="poam-h"><span>§6</span> Plan of action &amp; milestones</h2>
+  <p class="lede">Open work, stated plainly. A package without open items has not been looked at closely.</p>
+  <div class="table"><table>
+    <thead><tr><th scope="col">ID</th><th scope="col">Item</th><th scope="col">Where</th><th scope="col">Status</th></tr></thead>
+    <tbody><tr><td>EVD-008</td><td>Azure Policy and Defender CSPM report captured as evidence</td><td><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></td><td>Open</td></tr><tr><td>EVD-010</td><td>GitHub OIDC deployment run recorded</td><td><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></td><td>Open</td></tr><tr><td>EVD-011</td><td>MFA enforcement evidence captured</td><td><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></td><td>Open</td></tr><tr><td>LM-SEN</td><td>Sensor layer: Zeek and Suricata with VPC traffic mirroring</td><td><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></td><td>Open</td></tr><tr><td>LM-STATE</td><td>Terraform state moved to a private, locked S3 backend</td><td><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></td><td>Open</td></tr></tbody>
+  </table></div>
 </section>
 
-<!-- ============================ SECTION 8 ===================== -->
-<section class="section" id="contact">
-  <p class="section__index">SECTION 08</p>
-  <h2 class="section__title">Contact</h2>
-  <ul class="contact">
-    <li><a href="https://github.com/Saivignesh-1177" rel="noopener">GITHUB · Saivignesh-1177 →</a></li>
-    <!-- <li><a href="LINKEDIN_URL" rel="noopener">LINKEDIN →</a></li> -->
-    <!-- <li><a href="mailto:EMAIL_ADDRESS">EMAIL →</a></li> -->
-  </ul>
+<section aria-labelledby="auth-h" class="auth">
+  <h2 id="auth-h"><span>§7</span> Credentials &amp; contact</h2>
+  <ul class="creds"><li><p class="kind">certification</p><p>Microsoft Certified: Azure Administrator Associate</p></li><li><p class="kind">education</p><p>Master of Artificial Intelligence — University of North Texas</p><p class="detail">Coursework: Cloud Computing, Networking, Computer Algorithms, Software Development with AI</p></li></ul>
+  <p class="contact"><a href="mailto:rollasaivigneshrayal@gmail.com">rollasaivigneshrayal@gmail.com</a>
+  <a href="https://github.com/Saivignesh-1177">github.com/Saivignesh-1177</a>
+  <span>United States · open to relocate</span></p>
 </section>
 </main>
 
-<footer class="footer">
-  <p>SECURE BY DESIGN · AUTOMATED BY INTENT · BUILT FOR RESILIENCE</p>
-  <p class="footer__note">All animated telemetry on this page is a simulated visualization. Impact figures are historical engineering outcomes, not live metrics.</p>
+<footer class="integrity">
+  <div class="seal-line">
+    <p>Integrity seal · SHA-256 of <a href="profile.json">profile.json</a></p>
+    <code id="seal" data-digest="cfa617070d8380448de38801a656052ea58006f4e2bdd37af3d4e261ded669b0">cfa617070d8380448de38801a656052ea58006f4e2bdd37af3d4e261ded669b0</code>
+    <p id="verify" aria-live="polite">Verification runs in your browser when scripts are enabled.</p>
+  </div>
+  <p class="colophon">Set in Instrument Serif and IBM Plex, self-hosted under the SIL Open Font License. No trackers, no third-party requests. <button type="button" id="print">Print package</button></p>
 </footer>
-
-<script src="script.js" defer></script>
 </body>
 </html>

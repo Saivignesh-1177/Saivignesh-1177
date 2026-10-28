@@ -1,338 +1,133 @@
-<p align="center">
-  <img src="./assets/hero.png" width="100%" alt="Sai Vignesh Rayal — Cybersecurity Engineer, Cloud Security" />
-</p>
+<p align="center"><img src="./assets/header.svg" width="100%" alt="Sai Vignesh Rayal — Cybersecurity Engineer, Cloud Security" /></p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/AZURE-3B0F14?style=for-the-badge&logo=microsoftazure&logoColor=ECE4D7" alt="Azure" />
-  <img src="https://img.shields.io/badge/AWS-5A161E?style=for-the-badge&logo=amazonaws&logoColor=ECE4D7" alt="AWS" />
-  <img src="https://img.shields.io/badge/TERRAFORM-3B0F14?style=for-the-badge&logo=terraform&logoColor=D3BF98" alt="Terraform" />
-  <img src="https://img.shields.io/badge/POWERSHELL-5A161E?style=for-the-badge&logo=powershell&logoColor=ECE4D7" alt="PowerShell" />
-</p>
+Five-plus years securing, automating and supporting Azure, AWS and Microsoft 365 — across healthcare research, cloud infrastructure and enterprise endpoint estates. I design access so there is nothing to steal, write the controls as code, and keep the evidence that proves they hold.
 
-<p align="center"><sub><strong>CLOUD SECURITY · SECURITY ENGINEERING · AUTOMATION · RISK & COMPLIANCE</strong></sub></p>
+<sub>Structured like a System Security Plan. Every statement cites its source; outcome figures are as reported in the résumé, not live telemetry. The full package is at <a href="https://saivignesh-1177.github.io/Saivignesh-1177/">saivignesh-1177.github.io/Saivignesh-1177/</a>.</sub>
 
----
+**Roles in scope** · Cloud Security Engineer · Identity & Access Management Engineer · DevSecOps Engineer · GRC / Security Compliance Engineer · Microsoft security roles — architecture, operations, identity, Azure security
 
-## ABOUT
+## §3 Control implementation
 
-### Security belongs in the architecture.
+<details open>
+<summary><code>AC · IA</code> <b>Identity & Access</b> — <i>Workload access built so no reusable credential exists.</i></summary>
 
-Cybersecurity Engineer with **5+ years of experience** across **Azure, AWS, and Microsoft 365**, focused on cloud security, infrastructure protection, vulnerability and risk management, incident response, security automation, endpoint security, compliance, and operational resilience.
-
-My work sits at the intersection of:
-
-<table>
-<tr>
-<td align="center"><strong>01<br>CLOUD</strong><br>Azure · AWS</td>
-<td align="center"><strong>02<br>SECURITY</strong><br>Identity · Threat · Data</td>
-<td align="center"><strong>03<br>ENGINEERING</strong><br>IaC · Automation · DevSecOps</td>
-<td align="center"><strong>04<br>GOVERNANCE</strong><br>Risk · Controls · Compliance</td>
-</tr>
-</table>
-
-> **Design securely. Automate deliberately. Detect continuously. Respond decisively.**
-
----
-
-# THE SECURITY STACK
-
-A practical progression from the foundations of a secure environment to modern cloud-security architecture.
-
-<details>
-<summary><strong>01 · SECURITY FOUNDATIONS</strong></summary>
-
-`Networking` · `TCP/IP` · `DNS` · `HTTP/HTTPS` · `TLS`  
-`Linux` · `Windows` · `Firewalls` · `Segmentation`  
-`Hardening` · `Configuration Baselines` · `Patch Management`  
-`Logging` · `Monitoring` · `Access Control` · `Least Privilege`
-
-**Core practice**
-
-`Vulnerability Management` · `Security Assessments` · `Risk Analysis`  
-`Threat Management` · `Data Protection` · `Endpoint Security`
+- Managed identity scoped to Key Vault Secrets User on exactly one secret; a decoy secret proves the boundary with a 403.  
+  ↳ [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab)
+- Secretless CI/CD through GitHub OIDC, with an ABAC condition limiting which role the pipeline can grant.  
+  ↳ [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab)
+- Access-control reviews; cloud solutions integrated securely while supporting researcher access needs.  
+  ↳ *Résumé · UW–Madison SMPH · 2025–26*
 
 </details>
 
 <details>
-<summary><strong>02 · CLOUD INFRASTRUCTURE SECURITY</strong></summary>
+<summary><code>SC · CM</code> <b>Cloud Boundary & Configuration</b> — <i>Networks default-deny; configuration is code and is tested before it exists.</i></summary>
 
-**Azure**  
-`Azure VMs` · `Azure Networking` · `Azure Storage` · `Azure SQL`
-
-**AWS**  
-`EC2` · `EKS` · `VPC` · `S3` · `RDS`
-
-**Security controls**  
-`Network Security Groups` · `Security Groups` · `Private Connectivity`  
-`Load Balancing` · `Auto Scaling` · `Secure Configuration`
-
-</details>
-
-<details>
-<summary><strong>03 · IDENTITY · DATA · ENDPOINT SECURITY</strong></summary>
-
-**Identity & access**
-
-`IAM` · `RBAC` · `MFA` · `Conditional Access` · `PAM`  
-`Workload Identity` · `Managed Identities` · `Service Principals`  
-`Access Reviews` · `Least Privilege`
-
-**Data security**
-
-`DLP` · `Data Classification` · `Encryption at Rest`  
-`Encryption in Transit` · `Key Management` · `Secrets Management`
-
-**Microsoft security / endpoint**
-
-`Microsoft 365 Security` · `Microsoft Defender`  
-`Microsoft Intune` · `SCCM` · `Exchange Online`  
-`SharePoint Online` · `Teams` · `OneDrive`
+- Key Vault reachable only from the workload subnet; 31 tests run against the compiled template before deploy.  
+  ↳ [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab)
+- Sealed AWS lab network: no internet gateway, no NAT, no public IPs, quarantine subnet, guardrail tests in CI.  
+  ↳ `living-museum-of-cyber-warfare` *(release pending)*
+- Secured Azure VMs, networking and storage while reducing infrastructure cost 15%.  
+  ↳ *Résumé · Kgate · 2023–25*
+- Designed AWS architectures on EC2, EKS, VPC, S3 and RDS with security controls, load balancing and auto-scaling.  
+  ↳ *Résumé · Tata Consultancy Services · 2020–22*
 
 </details>
 
 <details>
-<summary><strong>04 · CLOUD POSTURE · WORKLOAD PROTECTION</strong></summary>
+<summary><code>RA · CA</code> <b>Risk & Assessment</b> — <i>Find the misconfiguration before an attacker does, and write down what remains.</i></summary>
 
-**Cloud-security domains**
-
-`CSPM` · `CWPP` · `CNAPP` · `CIEM` · `DSPM`  
-`Container Security` · `Kubernetes Security` · `Runtime Protection`  
-`Misconfiguration Management` · `Policy Enforcement`  
-`Security Benchmarks` · `Attack Path Analysis`
-
-**Microsoft ecosystem**
-
-`Microsoft Defender for Cloud` · `Microsoft Sentinel`  
-`Microsoft Defender XDR` · `Microsoft Entra ID`  
-`Azure Policy` · `Azure Key Vault` · `Azure Monitor` · `Log Analytics`
-
-**AWS ecosystem**
-
-`AWS IAM` · `AWS Security Hub` · `Amazon GuardDuty`  
-`Amazon Inspector` · `Amazon Macie` · `Amazon Security Lake`  
-`AWS CloudTrail` · `KMS`
+- Vulnerability testing and security assessments across infrastructure, access and configuration — high-risk misconfiguration exposure down 25%.  
+  ↳ *Résumé · UW–Madison SMPH · 2025–26*
+- STRIDE threat model (T01–T15), eight adversary-emulation scenarios, findings fixed and re-tested or formally risk-accepted.  
+  ↳ [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab)
 
 </details>
 
 <details>
-<summary><strong>05 · DEVSECOPS · SOFTWARE SUPPLY CHAIN</strong></summary>
+<summary><code>AU · SI-4 · IR</code> <b>Detection & Response</b> — <i>Every read, denial and permission change is logged, alerted and rehearsed.</i></summary>
 
-`Secure SDLC` · `Threat Modeling` · `SAST` · `DAST` · `SCA`  
-`IaC Security` · `Policy as Code` · `SBOM` · `Dependency Security`  
-`Secrets Detection` · `Container Security` · `CI/CD Security`
-
-**GitHub security**
-
-`CodeQL` · `Code Scanning` · `Secret Scanning` · `Push Protection`  
-`Dependabot` · `Dependency Review` · `GitHub Actions Security` · `OIDC`
-
-**Automation**
-
-`Terraform` · `PowerShell` · `Ansible` · `JSON Templates`  
-`Jenkins` · `Docker` · `Kubernetes`
+- KQL hunts for secret reads, denials, unexpected networks, RBAC changes and log tampering; incident runbooks for token theft and escalation.  
+  ↳ [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab)
+- Monitored cloud systems for irregular behaviour and supported triage, containment and remediation — response turnaround 20% faster.  
+  ↳ *Résumé · UW–Madison SMPH · 2025–26*
+- VPC flow logs on all traffic to encrypted storage; sensor subnet reserved for Zeek and Suricata.  
+  ↳ `living-museum-of-cyber-warfare` *(release pending)*
 
 </details>
 
 <details>
-<summary><strong>06 · DETECTION · RESPONSE · OBSERVABILITY</strong></summary>
+<summary><code>SA · SR</code> <b>DevSecOps & Supply Chain</b> — <i>The pipeline is a security control, not a delivery convenience.</i></summary>
 
-**Detection**
-
-`SIEM` · `XDR` · `SOAR` · `Security Telemetry`  
-`Threat Intelligence` · `IOC / IOA Analysis` · `Detection Engineering`
-
-**Response**
-
-`Incident Response` · `Incident Triage` · `Containment`  
-`Eradication` · `Recovery` · `Root Cause Analysis` · `Threat Hunting`
-
-**Observability**
-
-`Microsoft Sentinel` · `Datadog` · `Dynatrace`  
-`Grafana` · `Nagios` · `Azure Monitor`
+- CI runs Bicep lint with security rules as errors, Checkov, Gitleaks over full history and traceability tests.  
+  ↳ [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab)
+- Terraform and PowerShell provisioning — manual effort down 40%, deployments consistent.  
+  ↳ *Résumé · Tata Consultancy Services · 2020–22*
+- Azure administration automated with PowerShell and JSON templates — manual effort down 30%.  
+  ↳ *Résumé · Kgate · 2023–25*
 
 </details>
 
 <details>
-<summary><strong>07 · GOVERNANCE · RISK · COMPLIANCE</strong></summary>
+<summary><code>SI-2 · AC-4</code> <b>Data Protection & Endpoint</b> — <i>Regulated data stays classified, contained and on compliant devices.</i></summary>
 
-**Risk & governance**
-
-`GRC` · `Cybersecurity Risk Management` · `Risk Assessment`  
-`Control Assessment` · `Control Mapping` · `Security Requirements`  
-`Policy & Standards` · `Security Architecture Review`  
-`Change Management` · `Audit Readiness`
-
-**Resilience**
-
-`Business Continuity` · `Disaster Recovery` · `Backup Strategy`  
-`Operational Resilience` · `Recovery Planning`
-
-**Frameworks & standards**
-
-`NIST CSF 2.0` · `NIST SP 800-53` · `CIS Controls v8.1`  
-`CIS Benchmarks` · `ISO/IEC 27001:2022` · `ISO/IEC 27002:2022`  
-`CSA CCM v4.1` · `PCI DSS v4.0.1`  
-`SOC 2 Trust Services Criteria` · `HIPAA` · `GDPR` · `FedRAMP Rev. 5`
-
-**Résumé-backed compliance**
-
-`DLP` · `GDPR` · `ISO 27001` · `HIPAA-aligned practices`  
-`NIST-based controls` · `Change Management` · `Security Awareness`
+- Microsoft Security & Compliance Center policies — DLP and threat-management controls — and Defender across Microsoft 365.  
+  ↳ *Résumé · Kgate · 2023–25*
+- Intune and SCCM across 500+ devices: compliance enforcement, patching, device policy — security incidents down 25%.  
+  ↳ *Résumé · Tata Consultancy Services · 2020–22*
 
 </details>
 
 <details>
-<summary><strong>08 · SECURITY ARCHITECTURE · EMERGING SECURITY</strong></summary>
+<summary><code>PL · PM · CP</code> <b>Governance, Risk & Compliance</b> — <i>Controls are mapped, traceable, and a build fails if a threat loses its control.</i></summary>
 
-**Zero Trust**
-
-`Verify Explicitly` · `Least Privilege` · `Assume Breach`  
-`Continuous Verification` · `Identity-Centric Security` · `Workload Trust`
-
-**Cloud architecture**
-
-`Secure-by-Design` · `Hybrid Cloud Security` · `Multicloud Security`  
-`Cloud-Native Security` · `Security Guardrails` · `Resilient Architecture`
-
-**Emerging focus**
-
-`AI Security Posture Management` · `AI Workload Security`  
-`AI Supply Chain Security` · `AI Data Protection` · `Agent Security`
+- Security requirements and control mappings for healthcare and research platforms — documented control coverage up 35%.  
+  ↳ *Résumé · UW–Madison SMPH · 2025–26*
+- 29 NIST SP 800-53 Rev 5 controls mapped to implementation, test, evidence and threat; crosswalk to CSF 2.0, SP 800-207, CIS and MCSB.  
+  ↳ [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab)
+- Standards, runbooks, continuity and disaster-recovery procedures — audit readiness and resilience up 30%; HIPAA-aligned and NIST-based practice.  
+  ↳ *Résumé · UW–Madison SMPH · 2025–26*
+- Backup and DR for Azure resources and SQL databases supporting 99.9% availability.  
+  ↳ *Résumé · Kgate · 2023–25*
 
 </details>
 
----
+## §4 Evidence
 
-# WHAT I BRING
+| Repository | Statements citing it |
+|---|---|
+| [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab) | 7 |
+| `living-museum-of-cyber-warfare` *(release pending)* | 2 |
 
-<table>
-<tr>
-<td width="50%" valign="top">
+<p align="center"><img src="./assets/ledger.svg" width="100%" alt="Outcome figures as reported in the résumé" /></p>
 
-### CLOUD SECURITY ENGINEERING
+## §5 Operating history
 
-Cloud hardening · secure architecture · security controls · regulated-data protection · workload onboarding.
+| Period | Role | Organisation |
+|---|---|---|
+| Apr 2025 – Apr 2026 | Cybersecurity Engineer II / Cloud Security Engineer | University of Wisconsin–Madison · School of Medicine and Public Health · Madison, WI |
+| Apr 2023 – Mar 2025 | Cloud Engineer — Security & Infrastructure | Kgate · Houston, TX |
+| Feb 2020 – Jun 2022 | Microsoft Cloud Solution Engineer — Security, Compliance & Endpoint | Tata Consultancy Services · Bengaluru, India |
 
-</td>
-<td width="50%" valign="top">
+## §6 Plan of action & milestones
 
-### SECURITY OPERATIONS
+Open work, stated plainly.
 
-Vulnerability management · risk analysis · incident response · monitoring · threat management.
+| ID | Item | Where |
+|---|---|---|
+| `EVD-008` | Azure Policy and Defender CSPM report captured as evidence | [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab) |
+| `EVD-010` | GitHub OIDC deployment run recorded | [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab) |
+| `EVD-011` | MFA enforcement evidence captured | [`azure-iam-zero-trust-lab`](https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab) |
+| `LM-SEN` | Sensor layer: Zeek and Suricata with VPC traffic mirroring | `living-museum-of-cyber-warfare` *(release pending)* |
+| `LM-STATE` | Terraform state moved to a private, locked S3 backend | `living-museum-of-cyber-warfare` *(release pending)* |
 
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+## §7 Credentials & contact
 
-### SECURITY AUTOMATION
+- **Microsoft Certified: Azure Administrator Associate**
+- **Master of Artificial Intelligence — University of North Texas** — Coursework: Cloud Computing, Networking, Computer Algorithms, Software Development with AI
 
-Terraform · PowerShell · Ansible · JSON templates · infrastructure as code · repeatable provisioning.
-
-</td>
-<td width="50%" valign="top">
-
-### RESILIENCE & GOVERNANCE
-
-DLP · NIST-based controls · ISO 27001 · GDPR · HIPAA-aligned practices · business continuity · disaster recovery.
-
-</td>
-</tr>
-</table>
+[rollasaivigneshrayal@gmail.com](mailto:rollasaivigneshrayal@gmail.com) · United States · open to relocate
 
 ---
 
-# THE IMPACT LEDGER
-
-<p align="center">
-  <img src="./assets/impact-ledger.png" width="100%" alt="Documented engineering impact" />
-</p>
-
-<p align="center">
-  <sub><strong>Historical engineering outcomes reported in professional experience · not live telemetry</strong></sub>
-</p>
-
----
-
-# LIVE GITHUB SIGNAL
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Saivignesh-1177&show_icons=true&hide_border=true&bg_color=111110&title_color=D3BF98&icon_color=9A2424&text_color=ECE4D7&ring_color=A88A5A&custom_title=GitHub%20Activity" width="58%" alt="GitHub activity" />
-</p>
-
-<p align="center">
-  <sub>Live repository activity. Your GitHub profile remains the authoritative source for contributions.</sub>
-</p>
-
----
-
-# THE SECURITY PATH
-
-```text
-FOUNDATIONS
-     │
-     ▼
-CLOUD INFRASTRUCTURE
-     │
-     ▼
-IDENTITY · DATA · ENDPOINT
-     │
-     ▼
-POSTURE · WORKLOAD PROTECTION
-     │
-     ▼
-DEVSECOPS · SUPPLY CHAIN
-     │
-     ▼
-DETECTION · RESPONSE
-     │
-     ▼
-GOVERNANCE · RISK · COMPLIANCE
-     │
-     ▼
-SECURITY ARCHITECTURE
-```
-
----
-
-# DOCUMENTED EXPERIENCE
-
-The experience-backed core of the profile includes:
-
-`Azure Security` · `AWS Security` · `Microsoft 365 Security`  
-`Cloud Hardening` · `Secure Configuration Baselines`  
-`Vulnerability Testing` · `Risk Analysis` · `Security Assessments`  
-`Incident Response` · `Threat Management`  
-`Intune` · `SCCM` · `Endpoint Compliance` · `Patching`  
-`Terraform` · `PowerShell` · `Ansible` · `JSON Templates`  
-`Backup` · `Disaster Recovery` · `Business Continuity`
-
----
-
-# EDUCATION
-
-### Master of Artificial Intelligence
-
-`Cloud Computing` · `Networking` · `Computer Algorithms`  
-`Software Development with AI`
-
----
-
-# CONNECT
-
-<p align="center">
-  <a href="https://github.com/Saivignesh-1177">
-    <img src="https://img.shields.io/badge/GITHUB-Saivignesh--1177-111110?style=for-the-badge&logo=github&logoColor=ECE4D7&labelColor=3B0F14" alt="GitHub" />
-  </a>
-</p>
-
-<p align="center">
-  <sub>Professional profile · cloud security · security engineering</sub>
-</p>
-
----
-
-<p align="center">
-  <strong>SECURE BY DESIGN · AUTOMATED BY INTENT · BUILT FOR RESILIENCE</strong>
-</p>
+<sub>Generated from <code>profile.json</code> — the same source as the site and the artwork. Typefaces: Instrument Serif and IBM Plex (SIL Open Font License), self-hosted. No trackers or third-party requests.</sub>
