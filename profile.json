@@ -2,7 +2,7 @@
   "package": {
     "id": "SVR-01",
     "title": "Authorization Package",
-    "revision": "1.0",
+    "revision": "2.0",
     "date": "2026-10-28",
     "note": "Structured like a System Security Plan. Every statement cites its source; outcome figures are as reported in the résumé, not live telemetry."
   },
@@ -23,93 +23,291 @@
       "Microsoft security roles — architecture, operations, identity, Azure security"
     ],
     "credentials": [
-      { "name": "Microsoft Certified: Azure Administrator Associate", "type": "certification" },
-      { "name": "Master of Artificial Intelligence — University of North Texas", "type": "education",
-        "detail": "Coursework: Cloud Computing, Networking, Computer Algorithms, Software Development with AI" }
+      {
+        "name": "Microsoft Certified: Azure Administrator Associate",
+        "type": "certification"
+      },
+      {
+        "name": "Master of Artificial Intelligence — University of North Texas",
+        "type": "education",
+        "detail": "Coursework: Cloud Computing, Networking, Computer Algorithms, Software Development with AI"
+      }
     ]
   },
   "sources": {
-    "R-UW": { "label": "Résumé · UW–Madison SMPH · 2025–26", "kind": "resume" },
-    "R-KG": { "label": "Résumé · Kgate · 2023–25", "kind": "resume" },
-    "R-TCS": { "label": "Résumé · Tata Consultancy Services · 2020–22", "kind": "resume" },
-    "E-AZ": { "label": "azure-iam-zero-trust-lab", "kind": "repo", "url": "https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab" },
-    "E-LM": { "label": "living-museum-of-cyber-warfare", "kind": "repo", "url": "https://github.com/Saivignesh-1177/living-museum-of-cyber-warfare", "released": false }
+    "R-UW": {
+      "label": "Résumé · UW–Madison SMPH · 2025–26",
+      "kind": "resume"
+    },
+    "R-KG": {
+      "label": "Résumé · Kgate · 2023–25",
+      "kind": "resume"
+    },
+    "R-TCS": {
+      "label": "Résumé · Tata Consultancy Services · 2020–22",
+      "kind": "resume"
+    },
+    "E-AZ": {
+      "label": "azure-iam-zero-trust-lab",
+      "kind": "repo",
+      "url": "https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab"
+    },
+    "E-LM": {
+      "label": "living-museum-of-cyber-warfare",
+      "kind": "repo",
+      "url": "https://github.com/Saivignesh-1177/living-museum-of-cyber-warfare",
+      "released": false
+    }
   },
   "controls": [
     {
-      "family": "AC · IA", "name": "Identity & Access",
+      "family": "AC · IA",
+      "name": "Identity & Access",
       "statement": "Workload access built so no reusable credential exists.",
       "implementation": [
-        { "text": "Managed identity scoped to Key Vault Secrets User on exactly one secret; a decoy secret proves the boundary with a 403.", "src": "E-AZ" },
-        { "text": "Secretless CI/CD through GitHub OIDC, with an ABAC condition limiting which role the pipeline can grant.", "src": "E-AZ" },
-        { "text": "Access-control reviews; cloud solutions integrated securely while supporting researcher access needs.", "src": "R-UW" }
+        {
+          "text": "Managed identity scoped to Key Vault Secrets User on exactly one secret; a decoy secret proves the boundary with a 403.",
+          "src": "E-AZ"
+        },
+        {
+          "text": "Secretless CI/CD through GitHub OIDC, with an ABAC condition limiting which role the pipeline can grant.",
+          "src": "E-AZ"
+        },
+        {
+          "text": "Access-control reviews; cloud solutions integrated securely while supporting researcher access needs.",
+          "src": "R-UW"
+        }
       ]
     },
     {
-      "family": "SC · CM", "name": "Cloud Boundary & Configuration",
+      "family": "SC · CM",
+      "name": "Cloud Boundary & Configuration",
       "statement": "Networks default-deny; configuration is code and is tested before it exists.",
       "implementation": [
-        { "text": "Key Vault reachable only from the workload subnet; 31 tests run against the compiled template before deploy.", "src": "E-AZ" },
-        { "text": "Sealed AWS lab network: no internet gateway, no NAT, no public IPs, quarantine subnet, guardrail tests in CI.", "src": "E-LM" },
-        { "text": "Secured Azure VMs, networking and storage while reducing infrastructure cost 15%.", "src": "R-KG" },
-        { "text": "Designed AWS architectures on EC2, EKS, VPC, S3 and RDS with security controls, load balancing and auto-scaling.", "src": "R-TCS" }
+        {
+          "text": "Key Vault reachable only from the workload subnet; 31 tests run against the compiled template before deploy.",
+          "src": "E-AZ"
+        },
+        {
+          "text": "Sealed AWS lab network: no internet gateway, no NAT, no public IPs, quarantine subnet, guardrail tests in CI.",
+          "src": "E-LM"
+        },
+        {
+          "text": "Secured Azure VMs, networking and storage while reducing infrastructure cost 15%.",
+          "src": "R-KG"
+        },
+        {
+          "text": "Designed AWS architectures on EC2, EKS, VPC, S3 and RDS with security controls, load balancing and auto-scaling.",
+          "src": "R-TCS"
+        }
       ]
     },
     {
-      "family": "RA · CA", "name": "Risk & Assessment",
+      "family": "RA · CA",
+      "name": "Risk & Assessment",
       "statement": "Find the misconfiguration before an attacker does, and write down what remains.",
       "implementation": [
-        { "text": "Vulnerability testing and security assessments across infrastructure, access and configuration — high-risk misconfiguration exposure down 25%.", "src": "R-UW" },
-        { "text": "STRIDE threat model (T01–T15), eight adversary-emulation scenarios, findings fixed and re-tested or formally risk-accepted.", "src": "E-AZ" }
+        {
+          "text": "Vulnerability testing and security assessments across infrastructure, access and configuration — high-risk misconfiguration exposure down 25%.",
+          "src": "R-UW"
+        },
+        {
+          "text": "STRIDE threat model (T01–T15), eight adversary-emulation scenarios, findings fixed and re-tested or formally risk-accepted.",
+          "src": "E-AZ"
+        }
       ]
     },
     {
-      "family": "AU · SI-4 · IR", "name": "Detection & Response",
+      "family": "AU · SI-4 · IR",
+      "name": "Detection & Response",
       "statement": "Every read, denial and permission change is logged, alerted and rehearsed.",
       "implementation": [
-        { "text": "KQL hunts for secret reads, denials, unexpected networks, RBAC changes and log tampering; incident runbooks for token theft and escalation.", "src": "E-AZ" },
-        { "text": "Monitored cloud systems for irregular behaviour and supported triage, containment and remediation — response turnaround 20% faster.", "src": "R-UW" },
-        { "text": "VPC flow logs on all traffic to encrypted storage; sensor subnet reserved for Zeek and Suricata.", "src": "E-LM" }
+        {
+          "text": "KQL hunts for secret reads, denials, unexpected networks, RBAC changes and log tampering; incident runbooks for token theft and escalation.",
+          "src": "E-AZ"
+        },
+        {
+          "text": "Monitored cloud systems for irregular behaviour and supported triage, containment and remediation — response turnaround 20% faster.",
+          "src": "R-UW"
+        },
+        {
+          "text": "VPC flow logs on all traffic to encrypted storage; sensor subnet reserved for Zeek and Suricata.",
+          "src": "E-LM"
+        }
       ]
     },
     {
-      "family": "SA · SR", "name": "DevSecOps & Supply Chain",
+      "family": "SA · SR",
+      "name": "DevSecOps & Supply Chain",
       "statement": "The pipeline is a security control, not a delivery convenience.",
       "implementation": [
-        { "text": "CI runs Bicep lint with security rules as errors, Checkov, Gitleaks over full history and traceability tests.", "src": "E-AZ" },
-        { "text": "Terraform and PowerShell provisioning — manual effort down 40%, deployments consistent.", "src": "R-TCS" },
-        { "text": "Azure administration automated with PowerShell and JSON templates — manual effort down 30%.", "src": "R-KG" }
+        {
+          "text": "CI runs Bicep lint with security rules as errors, Checkov, Gitleaks over full history and traceability tests.",
+          "src": "E-AZ"
+        },
+        {
+          "text": "Terraform and PowerShell provisioning — manual effort down 40%, deployments consistent.",
+          "src": "R-TCS"
+        },
+        {
+          "text": "Azure administration automated with PowerShell and JSON templates — manual effort down 30%.",
+          "src": "R-KG"
+        }
       ]
     },
     {
-      "family": "SI-2 · AC-4", "name": "Data Protection & Endpoint",
+      "family": "SI-2 · AC-4",
+      "name": "Data Protection & Endpoint",
       "statement": "Regulated data stays classified, contained and on compliant devices.",
       "implementation": [
-        { "text": "Microsoft Security & Compliance Center policies — DLP and threat-management controls — and Defender across Microsoft 365.", "src": "R-KG" },
-        { "text": "Intune and SCCM across 500+ devices: compliance enforcement, patching, device policy — security incidents down 25%.", "src": "R-TCS" }
+        {
+          "text": "Microsoft Security & Compliance Center policies — DLP and threat-management controls — and Defender across Microsoft 365.",
+          "src": "R-KG"
+        },
+        {
+          "text": "Intune and SCCM across 500+ devices: compliance enforcement, patching, device policy — security incidents down 25%.",
+          "src": "R-TCS"
+        }
       ]
     },
     {
-      "family": "PL · PM · CP", "name": "Governance, Risk & Compliance",
+      "family": "PL · PM · CP",
+      "name": "Governance, Risk & Compliance",
       "statement": "Controls are mapped, traceable, and a build fails if a threat loses its control.",
       "implementation": [
-        { "text": "Security requirements and control mappings for healthcare and research platforms — documented control coverage up 35%.", "src": "R-UW" },
-        { "text": "29 NIST SP 800-53 Rev 5 controls mapped to implementation, test, evidence and threat; crosswalk to CSF 2.0, SP 800-207, CIS and MCSB.", "src": "E-AZ" },
-        { "text": "Standards, runbooks, continuity and disaster-recovery procedures — audit readiness and resilience up 30%; HIPAA-aligned and NIST-based practice.", "src": "R-UW" },
-        { "text": "Backup and DR for Azure resources and SQL databases supporting 99.9% availability.", "src": "R-KG" }
+        {
+          "text": "Security requirements and control mappings for healthcare and research platforms — documented control coverage up 35%.",
+          "src": "R-UW"
+        },
+        {
+          "text": "29 NIST SP 800-53 Rev 5 controls mapped to implementation, test, evidence and threat; crosswalk to CSF 2.0, SP 800-207, CIS and MCSB.",
+          "src": "E-AZ"
+        },
+        {
+          "text": "Standards, runbooks, continuity and disaster-recovery procedures — audit readiness and resilience up 30%; HIPAA-aligned and NIST-based practice.",
+          "src": "R-UW"
+        },
+        {
+          "text": "Backup and DR for Azure resources and SQL databases supporting 99.9% availability.",
+          "src": "R-KG"
+        }
       ]
     }
   ],
   "history": [
-    { "org": "University of Wisconsin–Madison · School of Medicine and Public Health", "title": "Cybersecurity Engineer II / Cloud Security Engineer", "place": "Madison, WI", "from": "Apr 2025", "to": "Apr 2026", "src": "R-UW" },
-    { "org": "Kgate", "title": "Cloud Engineer — Security & Infrastructure", "place": "Houston, TX", "from": "Apr 2023", "to": "Mar 2025", "src": "R-KG" },
-    { "org": "Tata Consultancy Services", "title": "Microsoft Cloud Solution Engineer — Security, Compliance & Endpoint", "place": "Bengaluru, India", "from": "Feb 2020", "to": "Jun 2022", "src": "R-TCS" }
+    {
+      "org": "University of Wisconsin–Madison · School of Medicine and Public Health",
+      "title": "Cybersecurity Engineer II / Cloud Security Engineer",
+      "place": "Madison, WI",
+      "from": "Apr 2025",
+      "to": "Apr 2026",
+      "src": "R-UW"
+    },
+    {
+      "org": "Kgate",
+      "title": "Cloud Engineer — Security & Infrastructure",
+      "place": "Houston, TX",
+      "from": "Apr 2023",
+      "to": "Mar 2025",
+      "src": "R-KG"
+    },
+    {
+      "org": "Tata Consultancy Services",
+      "title": "Microsoft Cloud Solution Engineer — Security, Compliance & Endpoint",
+      "place": "Bengaluru, India",
+      "from": "Feb 2020",
+      "to": "Jun 2022",
+      "src": "R-TCS"
+    }
   ],
   "poam": [
-    { "id": "EVD-008", "item": "Azure Policy and Defender CSPM report captured as evidence", "src": "E-AZ" },
-    { "id": "EVD-010", "item": "GitHub OIDC deployment run recorded", "src": "E-AZ" },
-    { "id": "EVD-011", "item": "MFA enforcement evidence captured", "src": "E-AZ" },
-    { "id": "LM-SEN", "item": "Sensor layer: Zeek and Suricata with VPC traffic mirroring", "src": "E-LM" },
-    { "id": "LM-STATE", "item": "Terraform state moved to a private, locked S3 backend", "src": "E-LM" }
+    {
+      "id": "EVD-008",
+      "item": "Azure Policy and Defender CSPM report captured as evidence",
+      "src": "E-AZ"
+    },
+    {
+      "id": "EVD-010",
+      "item": "GitHub OIDC deployment run recorded",
+      "src": "E-AZ"
+    },
+    {
+      "id": "EVD-011",
+      "item": "MFA enforcement evidence captured",
+      "src": "E-AZ"
+    },
+    {
+      "id": "LM-SEN",
+      "item": "Sensor layer: Zeek and Suricata with VPC traffic mirroring",
+      "src": "E-LM"
+    },
+    {
+      "id": "LM-STATE",
+      "item": "Terraform state moved to a private, locked S3 backend",
+      "src": "E-LM"
+    }
+  ],
+  "layers": [
+    {
+      "id": "identity",
+      "title": "Identity",
+      "question": "Who may enter.",
+      "families": [
+        "AC · IA"
+      ],
+      "scene": "Only verified identities pass the gate. Everything else stops before it reaches the network.",
+      "src": "E-AZ"
+    },
+    {
+      "id": "network",
+      "title": "Network",
+      "question": "Where it may go.",
+      "families": [
+        "SC · CM"
+      ],
+      "scene": "Four subnets and no route out. Quarantine can only talk to the sensors.",
+      "src": "E-LM"
+    },
+    {
+      "id": "workload",
+      "title": "Workload",
+      "question": "What it may run.",
+      "families": [
+        "SA · SR"
+      ],
+      "scene": "Probed from inside the workload: one action allowed, seven denied.",
+      "src": "E-AZ"
+    },
+    {
+      "id": "data",
+      "title": "Data",
+      "question": "What it may read.",
+      "families": [
+        "SI-2 · AC-4"
+      ],
+      "scene": "One identity, one secret, one network path to it.",
+      "src": "E-AZ"
+    },
+    {
+      "id": "detection",
+      "title": "Detection",
+      "question": "What we will see.",
+      "families": [
+        "AU · SI-4 · IR",
+        "RA · CA"
+      ],
+      "scene": "Every read, denial and permission change is logged and alerted.",
+      "src": "E-AZ"
+    },
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "question": "Proof that it held.",
+      "families": [
+        "PL · PM · CP"
+      ],
+      "scene": "Controls mapped to tests, tests to evidence, evidence hashed.",
+      "src": "E-AZ"
+    }
   ]
 }

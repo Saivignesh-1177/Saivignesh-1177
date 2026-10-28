@@ -47,31 +47,48 @@ def chip(src_id, sources):
     return f'<span class="src">{e(s["label"])}</span>'
 
 
+def layer(i, lay, d):
+    src = d["sources"]
+    controls = [c for c in d["controls"] if c["family"] in lay["families"]]
+    blocks = "".join(
+        f'<div class="family"><p class="fam">{e(c["family"])} · {e(c["name"])}</p>'
+        f'<p class="stmt">{e(c["statement"])}</p><ol>'
+        + "".join(f'<li><p>{e(m["text"])}</p>{chip(m["src"], src)}</li>' for m in c["implementation"])
+        + "</ol></div>"
+        for c in controls)
+    extra = ""
+    if lay["id"] == "evidence":
+        repos = "".join(
+            f'<li>{chip(k, src)}<span>{sum(m["src"] == k for c in d["controls"] for m in c["implementation"])} statements cite it</span></li>'
+            for k, s in src.items() if s["kind"] == "repo")
+        poam = "".join(f'<tr><td>{e(x["id"])}</td><td>{e(x["item"])}</td><td>Open</td></tr>' for x in d["poam"])
+        extra = (f'<div class="family"><p class="fam">Repositories</p><ul class="repos">{repos}</ul></div>'
+                 f'<div class="family"><p class="fam">Plan of action &amp; milestones</p>'
+                 f'<p class="stmt">Open work, stated plainly.</p><table><tbody>{poam}</tbody></table></div>')
+    n = len(d["layers"])
+    return f"""
+<section class="layer" id="{e(lay["id"])}" data-scene="{e(lay["id"])}" data-depth="{i:02d}" data-title="{e(lay["title"])}" aria-labelledby="{e(lay["id"])}-h">
+  <div class="stage">
+    <p class="depth"><span>{i:02d}</span>/{n:02d} · {e(lay["title"])}</p>
+    <h2 id="{e(lay["id"])}-h">{e(lay["question"])}</h2>
+    <p class="scene-cap">{e(lay["scene"])} {chip(lay["src"], src)}</p>
+  </div>
+  <div class="work">{blocks}{extra}</div>
+</section>"""
+
+
 def render(d, digest):
     p, who, src = d["package"], d["subject"], d["sources"]
-    roles = "".join(f"<li>{e(r)}</li>" for r in who["roles_in_scope"])
-    rail = "".join(f'<li><a href="#c{i + 1}"><span>{e(c["family"])}</span>{e(c["name"])}</a></li>'
-                   for i, c in enumerate(d["controls"]))
-    controls = "".join(
-        f'<article class="control" id="c{i + 1}">'
-        f'<header><p class="fam">§3.{i + 1} · {e(c["family"])}</p><h3>{e(c["name"])}</h3>'
-        f'<p class="stmt">{e(c["statement"])}</p></header><ol>'
-        + "".join(f'<li><p>{e(m["text"])}</p>{chip(m["src"], src)}</li>' for m in c["implementation"])
-        + "</ol></article>"
-        for i, c in enumerate(d["controls"]))
+    layers = "".join(layer(i + 1, lay, d) for i, lay in enumerate(d["layers"]))
+    gauge = "".join(f'<li data-for="{e(l["id"])}"><span>{i + 1:02d}</span>{e(l["title"])}</li>'
+                    for i, l in enumerate(d["layers"]))
     history = "".join(
         f'<li><p class="when">{e(h["from"])} — {e(h["to"])}</p><div><h3>{e(h["title"])}</h3>'
         f'<p>{e(h["org"])} · {e(h["place"])}</p></div></li>' for h in d["history"])
-    evidence = "".join(
-        f'<li><h3>{chip(k, src)}</h3>'
-        f'<p>{sum(m["src"] == k for c in d["controls"] for m in c["implementation"])} control statements cite this repository.</p></li>'
-        for k, s in src.items() if s["kind"] == "repo")
-    poam = "".join(f'<tr><td>{e(x["id"])}</td><td>{e(x["item"])}</td><td>{chip(x["src"], src)}</td><td>Open</td></tr>'
-                   for x in d["poam"])
-    creds = "".join(f'<li><p class="kind">{e(c["type"])}</p><p>{e(c["name"])}</p>'
+    creds = "".join(f'<li><p class="fam">{e(c["type"])}</p><p>{e(c["name"])}</p>'
                     + (f'<p class="detail">{e(c["detail"])}</p>' if c.get("detail") else "") + "</li>"
                     for c in who["credentials"])
-    total = sum(len(c["implementation"]) for c in d["controls"])
+    roles = " · ".join(e(r) for r in who["roles_in_scope"])
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -79,82 +96,59 @@ def render(d, digest):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>{e(who["name"])} — {e(p["title"])} {e(p["id"])}</title>
-<meta name="description" content="{e(who["role"])}. {e(who["summary"])}">
+<title>{e(who["name"])} — {e(who["role"])}</title>
+<meta name="description" content="{e(who["summary"])}">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/instrument-serif-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <script src="app.js" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#identity">Skip to content</a>
+<canvas id="field" aria-hidden="true"></canvas>
+
 <header class="masthead">
-  <a class="mark" href="#top" aria-label="Top">{seal(len(d["controls"]))}</a>
-  <dl class="control-block">
-    <div><dt>Package</dt><dd>{e(p["id"])}</dd></div>
-    <div><dt>Revision</dt><dd>{e(p["revision"])}</dd></div>
-    <div><dt>Dated</dt><dd><time datetime="{e(p["date"])}">{e(p["date"])}</time></dd></div>
-    <div><dt>Statements</dt><dd>{total} · all sourced</dd></div>
-  </dl>
+  <a class="mark" href="#top" aria-label="Back to the surface">{seal(len(d["controls"]))}</a>
+  <p class="altimeter" aria-hidden="true"><span id="alt-depth">00</span> <span id="alt-name">Surface · the internet</span></p>
 </header>
 
-<main id="main">
-<section class="hero" id="top">
-  <p class="eyebrow">§1 · System identification</p>
-  <h1>{e(who["name"])}</h1>
-  <p class="role">{e(who["role"])}</p>
-  <p class="summary">{e(who["summary"])}</p>
-  <p class="note">{e(p["note"])}</p>
-</section>
+<nav class="gauge" aria-label="Layers"><ol>{gauge}</ol></nav>
 
-<section class="scope" aria-labelledby="scope-h">
-  <h2 id="scope-h"><span>§2</span> Roles in scope</h2>
-  <ul class="roles">{roles}</ul>
-</section>
-
-<section class="implementation" aria-labelledby="impl-h">
-  <h2 id="impl-h"><span>§3</span> Control implementation</h2>
-  <div class="split">
-    <nav class="rail" aria-label="Control families"><ol>{rail}</ol></nav>
-    <div class="controls">{controls}</div>
+<main>
+<section class="layer hero" id="top" data-scene="internet" data-depth="00" data-title="Surface · the internet">
+  <div class="stage">
+    <p class="depth"><span>00</span> · The open internet</p>
+    <h1>{e(who["name"])}</h1>
+    <p class="role">{e(who["role"])}</p>
+    <p class="summary">{e(who["summary"])}</p>
+    <p class="descend">A cloud estate is a stack of decisions about trust. Scroll down through one — every layer holds work I have done.</p>
+    <p class="cue" aria-hidden="true">Descend <span>↓</span></p>
   </div>
 </section>
-
-<section aria-labelledby="ev-h">
-  <h2 id="ev-h"><span>§4</span> Evidence</h2>
-  <ul class="evidence">{evidence}</ul>
-</section>
-
-<section aria-labelledby="hist-h">
-  <h2 id="hist-h"><span>§5</span> Operating history</h2>
-  <ol class="history">{history}</ol>
-</section>
-
-<section aria-labelledby="poam-h">
-  <h2 id="poam-h"><span>§6</span> Plan of action &amp; milestones</h2>
-  <p class="lede">Open work, stated plainly. A package without open items has not been looked at closely.</p>
-  <div class="table"><table>
-    <thead><tr><th scope="col">ID</th><th scope="col">Item</th><th scope="col">Where</th><th scope="col">Status</th></tr></thead>
-    <tbody>{poam}</tbody>
-  </table></div>
-</section>
-
-<section aria-labelledby="auth-h" class="auth">
-  <h2 id="auth-h"><span>§7</span> Credentials &amp; contact</h2>
-  <ul class="creds">{creds}</ul>
-  <p class="contact"><a href="mailto:{e(who["contact"]["email"])}">{e(who["contact"]["email"])}</a>
-  <a href="{e(who["contact"]["github"])}">github.com/Saivignesh-1177</a>
-  <span>{e(who["location"])}</span></p>
+{layers}
+<section class="layer record" id="record" data-scene="surface" data-depth="—" data-title="The record" aria-labelledby="record-h">
+  <div class="stage">
+    <p class="depth"><span>—</span> · Back at the surface</p>
+    <h2 id="record-h">The record.</h2>
+    <p class="scene-cap">{roles}</p>
+  </div>
+  <div class="work">
+    <div class="family"><p class="fam">Operating history</p><ol class="history">{history}</ol></div>
+    <div class="family"><p class="fam">Credentials</p><ul class="creds">{creds}</ul></div>
+    <div class="family contact">
+      <a href="mailto:{e(who["contact"]["email"])}">{e(who["contact"]["email"])}</a>
+      <a href="{e(who["contact"]["github"])}">github.com/Saivignesh-1177</a>
+      <span>{e(who["location"])}</span>
+    </div>
+  </div>
 </section>
 </main>
 
 <footer class="integrity">
-  <div class="seal-line">
-    <p>Integrity seal · SHA-256 of <a href="profile.json">profile.json</a></p>
-    <code id="seal" data-digest="{digest}">{digest}</code>
-    <p id="verify" aria-live="polite">Verification runs in your browser when scripts are enabled.</p>
-  </div>
-  <p class="colophon">Set in Instrument Serif and IBM Plex, self-hosted under the SIL Open Font License. No trackers, no third-party requests. <button type="button" id="print">Print package</button></p>
+  <p>{e(p["note"])}</p>
+  <p>Integrity seal · SHA-256 of <a href="profile.json">profile.json</a> <code id="seal" data-digest="{digest}">{digest}</code></p>
+  <p id="verify" aria-live="polite">Verification runs in your browser when scripts are enabled.</p>
+  <p>Set in Instrument Serif and IBM Plex, self-hosted under the SIL Open Font License. Particle field hand-written, no libraries, no trackers. <button type="button" id="motion">Pause motion</button></p>
 </footer>
 </body>
 </html>

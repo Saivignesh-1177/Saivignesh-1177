@@ -5,82 +5,107 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>Sai Vignesh Rayal — Authorization Package SVR-01</title>
-<meta name="description" content="Cybersecurity Engineer — Cloud Security. Five-plus years securing, automating and supporting Azure, AWS and Microsoft 365 — across healthcare research, cloud infrastructure and enterprise endpoint estates. I design access so there is nothing to steal, write the controls as code, and keep the evidence that proves they hold.">
+<title>Sai Vignesh Rayal — Cybersecurity Engineer — Cloud Security</title>
+<meta name="description" content="Five-plus years securing, automating and supporting Azure, AWS and Microsoft 365 — across healthcare research, cloud infrastructure and enterprise endpoint estates. I design access so there is nothing to steal, write the controls as code, and keep the evidence that proves they hold.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/instrument-serif-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <script src="app.js" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#identity">Skip to content</a>
+<canvas id="field" aria-hidden="true"></canvas>
+
 <header class="masthead">
-  <a class="mark" href="#top" aria-label="Top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-linecap="square" role="img" aria-label="SVR seal"><circle cx="20" cy="20" r="13" stroke-width=".6"/><path d="M20.00 4.80L20.00 1.80M31.88 10.52L34.23 8.65M34.82 23.38L37.74 24.05M26.60 33.69L27.90 36.40M13.40 33.69L12.10 36.40M5.18 23.38L2.26 24.05M8.12 10.52L5.77 8.65" stroke-width="1.2"/><path d="M14.5 16H11.5A2 2 0 0 0 11.5 20H12.5A2 2 0 0 1 12.5 24H9.5M16.5 16L20 24L23.5 16M25.5 24V16H28.5A2 2 0 0 1 28.5 20H25.5M28 20L30.5 24" stroke-width="1.15"/></svg></a>
-  <dl class="control-block">
-    <div><dt>Package</dt><dd>SVR-01</dd></div>
-    <div><dt>Revision</dt><dd>1.0</dd></div>
-    <div><dt>Dated</dt><dd><time datetime="2026-10-28">2026-10-28</time></dd></div>
-    <div><dt>Statements</dt><dd>21 · all sourced</dd></div>
-  </dl>
+  <a class="mark" href="#top" aria-label="Back to the surface"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-linecap="square" role="img" aria-label="SVR seal"><circle cx="20" cy="20" r="13" stroke-width=".6"/><path d="M20.00 4.80L20.00 1.80M31.88 10.52L34.23 8.65M34.82 23.38L37.74 24.05M26.60 33.69L27.90 36.40M13.40 33.69L12.10 36.40M5.18 23.38L2.26 24.05M8.12 10.52L5.77 8.65" stroke-width="1.2"/><path d="M14.5 16H11.5A2 2 0 0 0 11.5 20H12.5A2 2 0 0 1 12.5 24H9.5M16.5 16L20 24L23.5 16M25.5 24V16H28.5A2 2 0 0 1 28.5 20H25.5M28 20L30.5 24" stroke-width="1.15"/></svg></a>
+  <p class="altimeter" aria-hidden="true"><span id="alt-depth">00</span> <span id="alt-name">Surface · the internet</span></p>
 </header>
 
-<main id="main">
-<section class="hero" id="top">
-  <p class="eyebrow">§1 · System identification</p>
-  <h1>Sai Vignesh Rayal</h1>
-  <p class="role">Cybersecurity Engineer — Cloud Security</p>
-  <p class="summary">Five-plus years securing, automating and supporting Azure, AWS and Microsoft 365 — across healthcare research, cloud infrastructure and enterprise endpoint estates. I design access so there is nothing to steal, write the controls as code, and keep the evidence that proves they hold.</p>
-  <p class="note">Structured like a System Security Plan. Every statement cites its source; outcome figures are as reported in the résumé, not live telemetry.</p>
-</section>
+<nav class="gauge" aria-label="Layers"><ol><li data-for="identity"><span>01</span>Identity</li><li data-for="network"><span>02</span>Network</li><li data-for="workload"><span>03</span>Workload</li><li data-for="data"><span>04</span>Data</li><li data-for="detection"><span>05</span>Detection</li><li data-for="evidence"><span>06</span>Evidence</li></ol></nav>
 
-<section class="scope" aria-labelledby="scope-h">
-  <h2 id="scope-h"><span>§2</span> Roles in scope</h2>
-  <ul class="roles"><li>Cloud Security Engineer</li><li>Identity &amp; Access Management Engineer</li><li>DevSecOps Engineer</li><li>GRC / Security Compliance Engineer</li><li>Microsoft security roles — architecture, operations, identity, Azure security</li></ul>
-</section>
-
-<section class="implementation" aria-labelledby="impl-h">
-  <h2 id="impl-h"><span>§3</span> Control implementation</h2>
-  <div class="split">
-    <nav class="rail" aria-label="Control families"><ol><li><a href="#c1"><span>AC · IA</span>Identity &amp; Access</a></li><li><a href="#c2"><span>SC · CM</span>Cloud Boundary &amp; Configuration</a></li><li><a href="#c3"><span>RA · CA</span>Risk &amp; Assessment</a></li><li><a href="#c4"><span>AU · SI-4 · IR</span>Detection &amp; Response</a></li><li><a href="#c5"><span>SA · SR</span>DevSecOps &amp; Supply Chain</a></li><li><a href="#c6"><span>SI-2 · AC-4</span>Data Protection &amp; Endpoint</a></li><li><a href="#c7"><span>PL · PM · CP</span>Governance, Risk &amp; Compliance</a></li></ol></nav>
-    <div class="controls"><article class="control" id="c1"><header><p class="fam">§3.1 · AC · IA</p><h3>Identity &amp; Access</h3><p class="stmt">Workload access built so no reusable credential exists.</p></header><ol><li><p>Managed identity scoped to Key Vault Secrets User on exactly one secret; a decoy secret proves the boundary with a 403.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Secretless CI/CD through GitHub OIDC, with an ABAC condition limiting which role the pipeline can grant.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Access-control reviews; cloud solutions integrated securely while supporting researcher access needs.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li></ol></article><article class="control" id="c2"><header><p class="fam">§3.2 · SC · CM</p><h3>Cloud Boundary &amp; Configuration</h3><p class="stmt">Networks default-deny; configuration is code and is tested before it exists.</p></header><ol><li><p>Key Vault reachable only from the workload subnet; 31 tests run against the compiled template before deploy.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Sealed AWS lab network: no internet gateway, no NAT, no public IPs, quarantine subnet, guardrail tests in CI.</p><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></li><li><p>Secured Azure VMs, networking and storage while reducing infrastructure cost 15%.</p><span class="src">Résumé · Kgate · 2023–25</span></li><li><p>Designed AWS architectures on EC2, EKS, VPC, S3 and RDS with security controls, load balancing and auto-scaling.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li></ol></article><article class="control" id="c3"><header><p class="fam">§3.3 · RA · CA</p><h3>Risk &amp; Assessment</h3><p class="stmt">Find the misconfiguration before an attacker does, and write down what remains.</p></header><ol><li><p>Vulnerability testing and security assessments across infrastructure, access and configuration — high-risk misconfiguration exposure down 25%.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>STRIDE threat model (T01–T15), eight adversary-emulation scenarios, findings fixed and re-tested or formally risk-accepted.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li></ol></article><article class="control" id="c4"><header><p class="fam">§3.4 · AU · SI-4 · IR</p><h3>Detection &amp; Response</h3><p class="stmt">Every read, denial and permission change is logged, alerted and rehearsed.</p></header><ol><li><p>KQL hunts for secret reads, denials, unexpected networks, RBAC changes and log tampering; incident runbooks for token theft and escalation.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Monitored cloud systems for irregular behaviour and supported triage, containment and remediation — response turnaround 20% faster.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>VPC flow logs on all traffic to encrypted storage; sensor subnet reserved for Zeek and Suricata.</p><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></li></ol></article><article class="control" id="c5"><header><p class="fam">§3.5 · SA · SR</p><h3>DevSecOps &amp; Supply Chain</h3><p class="stmt">The pipeline is a security control, not a delivery convenience.</p></header><ol><li><p>CI runs Bicep lint with security rules as errors, Checkov, Gitleaks over full history and traceability tests.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Terraform and PowerShell provisioning — manual effort down 40%, deployments consistent.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li><li><p>Azure administration automated with PowerShell and JSON templates — manual effort down 30%.</p><span class="src">Résumé · Kgate · 2023–25</span></li></ol></article><article class="control" id="c6"><header><p class="fam">§3.6 · SI-2 · AC-4</p><h3>Data Protection &amp; Endpoint</h3><p class="stmt">Regulated data stays classified, contained and on compliant devices.</p></header><ol><li><p>Microsoft Security &amp; Compliance Center policies — DLP and threat-management controls — and Defender across Microsoft 365.</p><span class="src">Résumé · Kgate · 2023–25</span></li><li><p>Intune and SCCM across 500+ devices: compliance enforcement, patching, device policy — security incidents down 25%.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li></ol></article><article class="control" id="c7"><header><p class="fam">§3.7 · PL · PM · CP</p><h3>Governance, Risk &amp; Compliance</h3><p class="stmt">Controls are mapped, traceable, and a build fails if a threat loses its control.</p></header><ol><li><p>Security requirements and control mappings for healthcare and research platforms — documented control coverage up 35%.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>29 NIST SP 800-53 Rev 5 controls mapped to implementation, test, evidence and threat; crosswalk to CSF 2.0, SP 800-207, CIS and MCSB.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Standards, runbooks, continuity and disaster-recovery procedures — audit readiness and resilience up 30%; HIPAA-aligned and NIST-based practice.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>Backup and DR for Azure resources and SQL databases supporting 99.9% availability.</p><span class="src">Résumé · Kgate · 2023–25</span></li></ol></article></div>
+<main>
+<section class="layer hero" id="top" data-scene="internet" data-depth="00" data-title="Surface · the internet">
+  <div class="stage">
+    <p class="depth"><span>00</span> · The open internet</p>
+    <h1>Sai Vignesh Rayal</h1>
+    <p class="role">Cybersecurity Engineer — Cloud Security</p>
+    <p class="summary">Five-plus years securing, automating and supporting Azure, AWS and Microsoft 365 — across healthcare research, cloud infrastructure and enterprise endpoint estates. I design access so there is nothing to steal, write the controls as code, and keep the evidence that proves they hold.</p>
+    <p class="descend">A cloud estate is a stack of decisions about trust. Scroll down through one — every layer holds work I have done.</p>
+    <p class="cue" aria-hidden="true">Descend <span>↓</span></p>
   </div>
 </section>
 
-<section aria-labelledby="ev-h">
-  <h2 id="ev-h"><span>§4</span> Evidence</h2>
-  <ul class="evidence"><li><h3><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></h3><p>7 control statements cite this repository.</p></li><li><h3><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></h3><p>2 control statements cite this repository.</p></li></ul>
+<section class="layer" id="identity" data-scene="identity" data-depth="01" data-title="Identity" aria-labelledby="identity-h">
+  <div class="stage">
+    <p class="depth"><span>01</span>/06 · Identity</p>
+    <h2 id="identity-h">Who may enter.</h2>
+    <p class="scene-cap">Only verified identities pass the gate. Everything else stops before it reaches the network. <a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></p>
+  </div>
+  <div class="work"><div class="family"><p class="fam">AC · IA · Identity &amp; Access</p><p class="stmt">Workload access built so no reusable credential exists.</p><ol><li><p>Managed identity scoped to Key Vault Secrets User on exactly one secret; a decoy secret proves the boundary with a 403.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Secretless CI/CD through GitHub OIDC, with an ABAC condition limiting which role the pipeline can grant.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Access-control reviews; cloud solutions integrated securely while supporting researcher access needs.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li></ol></div></div>
 </section>
-
-<section aria-labelledby="hist-h">
-  <h2 id="hist-h"><span>§5</span> Operating history</h2>
-  <ol class="history"><li><p class="when">Apr 2025 — Apr 2026</p><div><h3>Cybersecurity Engineer II / Cloud Security Engineer</h3><p>University of Wisconsin–Madison · School of Medicine and Public Health · Madison, WI</p></div></li><li><p class="when">Apr 2023 — Mar 2025</p><div><h3>Cloud Engineer — Security &amp; Infrastructure</h3><p>Kgate · Houston, TX</p></div></li><li><p class="when">Feb 2020 — Jun 2022</p><div><h3>Microsoft Cloud Solution Engineer — Security, Compliance &amp; Endpoint</h3><p>Tata Consultancy Services · Bengaluru, India</p></div></li></ol>
+<section class="layer" id="network" data-scene="network" data-depth="02" data-title="Network" aria-labelledby="network-h">
+  <div class="stage">
+    <p class="depth"><span>02</span>/06 · Network</p>
+    <h2 id="network-h">Where it may go.</h2>
+    <p class="scene-cap">Four subnets and no route out. Quarantine can only talk to the sensors. <span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></p>
+  </div>
+  <div class="work"><div class="family"><p class="fam">SC · CM · Cloud Boundary &amp; Configuration</p><p class="stmt">Networks default-deny; configuration is code and is tested before it exists.</p><ol><li><p>Key Vault reachable only from the workload subnet; 31 tests run against the compiled template before deploy.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Sealed AWS lab network: no internet gateway, no NAT, no public IPs, quarantine subnet, guardrail tests in CI.</p><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></li><li><p>Secured Azure VMs, networking and storage while reducing infrastructure cost 15%.</p><span class="src">Résumé · Kgate · 2023–25</span></li><li><p>Designed AWS architectures on EC2, EKS, VPC, S3 and RDS with security controls, load balancing and auto-scaling.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li></ol></div></div>
 </section>
-
-<section aria-labelledby="poam-h">
-  <h2 id="poam-h"><span>§6</span> Plan of action &amp; milestones</h2>
-  <p class="lede">Open work, stated plainly. A package without open items has not been looked at closely.</p>
-  <div class="table"><table>
-    <thead><tr><th scope="col">ID</th><th scope="col">Item</th><th scope="col">Where</th><th scope="col">Status</th></tr></thead>
-    <tbody><tr><td>EVD-008</td><td>Azure Policy and Defender CSPM report captured as evidence</td><td><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></td><td>Open</td></tr><tr><td>EVD-010</td><td>GitHub OIDC deployment run recorded</td><td><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></td><td>Open</td></tr><tr><td>EVD-011</td><td>MFA enforcement evidence captured</td><td><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></td><td>Open</td></tr><tr><td>LM-SEN</td><td>Sensor layer: Zeek and Suricata with VPC traffic mirroring</td><td><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></td><td>Open</td></tr><tr><td>LM-STATE</td><td>Terraform state moved to a private, locked S3 backend</td><td><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></td><td>Open</td></tr></tbody>
-  </table></div>
+<section class="layer" id="workload" data-scene="workload" data-depth="03" data-title="Workload" aria-labelledby="workload-h">
+  <div class="stage">
+    <p class="depth"><span>03</span>/06 · Workload</p>
+    <h2 id="workload-h">What it may run.</h2>
+    <p class="scene-cap">Probed from inside the workload: one action allowed, seven denied. <a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></p>
+  </div>
+  <div class="work"><div class="family"><p class="fam">SA · SR · DevSecOps &amp; Supply Chain</p><p class="stmt">The pipeline is a security control, not a delivery convenience.</p><ol><li><p>CI runs Bicep lint with security rules as errors, Checkov, Gitleaks over full history and traceability tests.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Terraform and PowerShell provisioning — manual effort down 40%, deployments consistent.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li><li><p>Azure administration automated with PowerShell and JSON templates — manual effort down 30%.</p><span class="src">Résumé · Kgate · 2023–25</span></li></ol></div></div>
 </section>
-
-<section aria-labelledby="auth-h" class="auth">
-  <h2 id="auth-h"><span>§7</span> Credentials &amp; contact</h2>
-  <ul class="creds"><li><p class="kind">certification</p><p>Microsoft Certified: Azure Administrator Associate</p></li><li><p class="kind">education</p><p>Master of Artificial Intelligence — University of North Texas</p><p class="detail">Coursework: Cloud Computing, Networking, Computer Algorithms, Software Development with AI</p></li></ul>
-  <p class="contact"><a href="mailto:rollasaivigneshrayal@gmail.com">rollasaivigneshrayal@gmail.com</a>
-  <a href="https://github.com/Saivignesh-1177">github.com/Saivignesh-1177</a>
-  <span>United States · open to relocate</span></p>
+<section class="layer" id="data" data-scene="data" data-depth="04" data-title="Data" aria-labelledby="data-h">
+  <div class="stage">
+    <p class="depth"><span>04</span>/06 · Data</p>
+    <h2 id="data-h">What it may read.</h2>
+    <p class="scene-cap">One identity, one secret, one network path to it. <a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></p>
+  </div>
+  <div class="work"><div class="family"><p class="fam">SI-2 · AC-4 · Data Protection &amp; Endpoint</p><p class="stmt">Regulated data stays classified, contained and on compliant devices.</p><ol><li><p>Microsoft Security &amp; Compliance Center policies — DLP and threat-management controls — and Defender across Microsoft 365.</p><span class="src">Résumé · Kgate · 2023–25</span></li><li><p>Intune and SCCM across 500+ devices: compliance enforcement, patching, device policy — security incidents down 25%.</p><span class="src">Résumé · Tata Consultancy Services · 2020–22</span></li></ol></div></div>
+</section>
+<section class="layer" id="detection" data-scene="detection" data-depth="05" data-title="Detection" aria-labelledby="detection-h">
+  <div class="stage">
+    <p class="depth"><span>05</span>/06 · Detection</p>
+    <h2 id="detection-h">What we will see.</h2>
+    <p class="scene-cap">Every read, denial and permission change is logged and alerted. <a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></p>
+  </div>
+  <div class="work"><div class="family"><p class="fam">RA · CA · Risk &amp; Assessment</p><p class="stmt">Find the misconfiguration before an attacker does, and write down what remains.</p><ol><li><p>Vulnerability testing and security assessments across infrastructure, access and configuration — high-risk misconfiguration exposure down 25%.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>STRIDE threat model (T01–T15), eight adversary-emulation scenarios, findings fixed and re-tested or formally risk-accepted.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li></ol></div><div class="family"><p class="fam">AU · SI-4 · IR · Detection &amp; Response</p><p class="stmt">Every read, denial and permission change is logged, alerted and rehearsed.</p><ol><li><p>KQL hunts for secret reads, denials, unexpected networks, RBAC changes and log tampering; incident runbooks for token theft and escalation.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Monitored cloud systems for irregular behaviour and supported triage, containment and remediation — response turnaround 20% faster.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>VPC flow logs on all traffic to encrypted storage; sensor subnet reserved for Zeek and Suricata.</p><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span></li></ol></div></div>
+</section>
+<section class="layer" id="evidence" data-scene="evidence" data-depth="06" data-title="Evidence" aria-labelledby="evidence-h">
+  <div class="stage">
+    <p class="depth"><span>06</span>/06 · Evidence</p>
+    <h2 id="evidence-h">Proof that it held.</h2>
+    <p class="scene-cap">Controls mapped to tests, tests to evidence, evidence hashed. <a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></p>
+  </div>
+  <div class="work"><div class="family"><p class="fam">PL · PM · CP · Governance, Risk &amp; Compliance</p><p class="stmt">Controls are mapped, traceable, and a build fails if a threat loses its control.</p><ol><li><p>Security requirements and control mappings for healthcare and research platforms — documented control coverage up 35%.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>29 NIST SP 800-53 Rev 5 controls mapped to implementation, test, evidence and threat; crosswalk to CSF 2.0, SP 800-207, CIS and MCSB.</p><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></li><li><p>Standards, runbooks, continuity and disaster-recovery procedures — audit readiness and resilience up 30%; HIPAA-aligned and NIST-based practice.</p><span class="src">Résumé · UW–Madison SMPH · 2025–26</span></li><li><p>Backup and DR for Azure resources and SQL databases supporting 99.9% availability.</p><span class="src">Résumé · Kgate · 2023–25</span></li></ol></div><div class="family"><p class="fam">Repositories</p><ul class="repos"><li><a class="src src-repo" href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a><span>7 statements cite it</span></li><li><span class="src src-pending" title="Repository not yet public">living-museum-of-cyber-warfare · release pending</span><span>2 statements cite it</span></li></ul></div><div class="family"><p class="fam">Plan of action &amp; milestones</p><p class="stmt">Open work, stated plainly.</p><table><tbody><tr><td>EVD-008</td><td>Azure Policy and Defender CSPM report captured as evidence</td><td>Open</td></tr><tr><td>EVD-010</td><td>GitHub OIDC deployment run recorded</td><td>Open</td></tr><tr><td>EVD-011</td><td>MFA enforcement evidence captured</td><td>Open</td></tr><tr><td>LM-SEN</td><td>Sensor layer: Zeek and Suricata with VPC traffic mirroring</td><td>Open</td></tr><tr><td>LM-STATE</td><td>Terraform state moved to a private, locked S3 backend</td><td>Open</td></tr></tbody></table></div></div>
+</section>
+<section class="layer record" id="record" data-scene="surface" data-depth="—" data-title="The record" aria-labelledby="record-h">
+  <div class="stage">
+    <p class="depth"><span>—</span> · Back at the surface</p>
+    <h2 id="record-h">The record.</h2>
+    <p class="scene-cap">Cloud Security Engineer · Identity &amp; Access Management Engineer · DevSecOps Engineer · GRC / Security Compliance Engineer · Microsoft security roles — architecture, operations, identity, Azure security</p>
+  </div>
+  <div class="work">
+    <div class="family"><p class="fam">Operating history</p><ol class="history"><li><p class="when">Apr 2025 — Apr 2026</p><div><h3>Cybersecurity Engineer II / Cloud Security Engineer</h3><p>University of Wisconsin–Madison · School of Medicine and Public Health · Madison, WI</p></div></li><li><p class="when">Apr 2023 — Mar 2025</p><div><h3>Cloud Engineer — Security &amp; Infrastructure</h3><p>Kgate · Houston, TX</p></div></li><li><p class="when">Feb 2020 — Jun 2022</p><div><h3>Microsoft Cloud Solution Engineer — Security, Compliance &amp; Endpoint</h3><p>Tata Consultancy Services · Bengaluru, India</p></div></li></ol></div>
+    <div class="family"><p class="fam">Credentials</p><ul class="creds"><li><p class="fam">certification</p><p>Microsoft Certified: Azure Administrator Associate</p></li><li><p class="fam">education</p><p>Master of Artificial Intelligence — University of North Texas</p><p class="detail">Coursework: Cloud Computing, Networking, Computer Algorithms, Software Development with AI</p></li></ul></div>
+    <div class="family contact">
+      <a href="mailto:rollasaivigneshrayal@gmail.com">rollasaivigneshrayal@gmail.com</a>
+      <a href="https://github.com/Saivignesh-1177">github.com/Saivignesh-1177</a>
+      <span>United States · open to relocate</span>
+    </div>
+  </div>
 </section>
 </main>
 
 <footer class="integrity">
-  <div class="seal-line">
-    <p>Integrity seal · SHA-256 of <a href="profile.json">profile.json</a></p>
-    <code id="seal" data-digest="cfa617070d8380448de38801a656052ea58006f4e2bdd37af3d4e261ded669b0">cfa617070d8380448de38801a656052ea58006f4e2bdd37af3d4e261ded669b0</code>
-    <p id="verify" aria-live="polite">Verification runs in your browser when scripts are enabled.</p>
-  </div>
-  <p class="colophon">Set in Instrument Serif and IBM Plex, self-hosted under the SIL Open Font License. No trackers, no third-party requests. <button type="button" id="print">Print package</button></p>
+  <p>Structured like a System Security Plan. Every statement cites its source; outcome figures are as reported in the résumé, not live telemetry.</p>
+  <p>Integrity seal · SHA-256 of <a href="profile.json">profile.json</a> <code id="seal" data-digest="e2d5fa6c3e1b2c5220f6d7fb282cc97de14510106621f89a02bd30d4e407c267">e2d5fa6c3e1b2c5220f6d7fb282cc97de14510106621f89a02bd30d4e407c267</code></p>
+  <p id="verify" aria-live="polite">Verification runs in your browser when scripts are enabled.</p>
+  <p>Set in Instrument Serif and IBM Plex, self-hosted under the SIL Open Font License. Particle field hand-written, no libraries, no trackers. <button type="button" id="motion">Pause motion</button></p>
 </footer>
 </body>
 </html>
