@@ -183,9 +183,9 @@ function frame(now) {
 
 async function verifySeal() {
   const el = document.getElementById("verify");
-  const expected = document.getElementById("seal").dataset.digest;
+  const sealEl = document.getElementById("seal"), expected = sealEl.dataset.digest;
   try {
-    const res = await fetch("profile.json", { cache: "no-store" });
+    const res = await fetch(sealEl.dataset.src, { cache: "no-store" });
     const buf = await crypto.subtle.digest("SHA-256", await res.arrayBuffer());
     const actual = [...new Uint8Array(buf)].map((x) => x.toString(16).padStart(2, "0")).join("");
     el.dataset.state = actual === expected ? "pass" : "fail";
