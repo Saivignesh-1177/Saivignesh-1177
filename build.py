@@ -167,6 +167,7 @@ def render(d, digest, key):
 
 <footer class="integrity">
   <p class="focus-nav">Read this record by focus: {others}</p>
+  <p class="focus-nav">Field notes: <a href="{base}journal/">The Boundary — articles and drawings from the labs</a></p>
   <p>{e(p["note"])}</p>
   <p>Integrity seal · SHA-256 of <a href="{base}profile.json">profile.json</a> <code id="seal" data-src="{base}profile.json" data-digest="{digest}">{digest}</code></p>
   <p id="verify" aria-live="polite">Verification runs in your browser when scripts are enabled.</p>

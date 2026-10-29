@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>The Boundary — Field notes on cloud security · Sai Vignesh Rayal</title>
+<meta name="description" content="Field notes on cloud security, identity and evidence: how a zero-trust Azure lab leaves nothing to steal, and how a cyber range is sealed before anything runs in it.">
+<link rel="canonical" href="https://saivignesh-1177.github.io/Saivignesh-1177/journal/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/source-serif-4-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../journal.css">
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <div class="folio">
+    <span>Vol. I · No. 1</span>
+    <a href="../">Return to the portfolio ↗</a>
+    <span>Field notes on cloud security</span>
+  </div>
+  <div class="flag">
+    <p class="ear"><b>Forecast</b>Default-deny across all regions. No egress expected.</p>
+    <h1>The Boundary</h1>
+    <p class="ear right"><b>This edition</b>Trackers: 0 · Third-party requests: 0 · Open findings: published</p>
+  </div>
+  <div class="dateline">
+    <span>Wednesday, October 28, 2026</span>
+    <span>Identity · Network · Evidence</span>
+    <span>Written and engineered by Sai Vignesh Rayal</span>
+  </div>
+</header>
+
+<main class="front">
+  <article class="lead" id="nothing-to-steal" aria-labelledby="a1">
+    <p class="kicker">Identity &amp; Access · Azure</p>
+    <h2 class="headline" id="a1">Nothing to Steal</h2>
+    <p class="deck">An attacker has the code, the configuration and a shell on the server. A zero-trust lab on Azure was built to answer one question — what can they take? — and to keep the evidence of the answer.</p>
+    <p class="byline"><span>By Sai Vignesh Rayal</span><span>Lab run of October 28, 2026 · <a href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a></span></p>
+
+    <figure>
+      <svg viewBox="0 0 960 520" role="img" aria-labelledby="f1t">
+        <title id="f1t">Architecture of the zero-trust lab: secretless delivery, a workload identity scoped to one secret, a default-deny vault, and audit logging.</title>
+        <defs>
+          <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8E2A24" stroke-width="1"/></pattern>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1B1815"/></marker>
+          <marker id="arr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8E2A24"/></marker>
+        </defs>
+        <!-- delivery -->
+        <text x="30" y="24" class="d-mr">DELIVERY · NO STORED SECRET</text>
+        <rect x="30" y="36" width="210" height="72" class="d-box"/>
+        <text x="46" y="66" class="d-h">GitHub Actions</text>
+        <text x="46" y="88" class="d-m">CI · lint · Checkov · Gitleaks</text>
+        <rect x="330" y="36" width="230" height="72" class="d-box"/>
+        <text x="346" y="66" class="d-h">Microsoft Entra ID</text>
+        <text x="346" y="88" class="d-m">federated · no client secret</text>
+        <rect x="650" y="36" width="280" height="72" class="d-box"/>
+        <text x="666" y="66" class="d-h">Resource Manager</text>
+        <text x="666" y="88" class="d-m">ABAC: pipeline may grant one role</text>
+        <path d="M240 72H326" class="d-line" marker-end="url(#arr)"/><text x="252" y="64" class="d-m">OIDC</text>
+        <path d="M560 72H646" class="d-line" marker-end="url(#arr)"/><text x="572" y="64" class="d-m">token</text>
+
+        <!-- workload -->
+        <rect x="30" y="170" width="350" height="190" class="d-soft"/>
+        <text x="44" y="190" class="d-mr">WORKLOAD NETWORK · THE ONLY ALLOWED SOURCE</text>
+        <rect x="58" y="210" width="294" height="118" class="d-box"/>
+        <text x="74" y="242" class="d-h">Workload</text>
+        <text x="74" y="266" class="d-m">Arc-enabled server · managed identity</text>
+        <text x="74" y="284" class="d-m">no credential on disk or in memory</text>
+        <text x="74" y="306" class="d-m">role: Key Vault Secrets User — one secret</text>
+
+        <!-- vault -->
+        <rect x="500" y="170" width="300" height="190" class="d-box"/>
+        <path d="M500 170V360" stroke="#1B1815" stroke-width="5"/>
+        <text x="518" y="200" class="d-h">Key Vault</text>
+        <text x="518" y="220" class="d-m">firewall default-deny · RBAC model</text>
+        <text x="518" y="236" class="d-m">purge protection · no trusted bypass</text>
+        <rect x="518" y="254" width="264" height="38" class="d-box"/>
+        <text x="530" y="278" class="d-t">app-db-password</text>
+        <text x="770" y="278" text-anchor="end" class="d-m">read · 200</text>
+        <rect x="518" y="302" width="264" height="38" class="d-hatch"/>
+        <rect x="524" y="308" width="140" height="26" fill="#F1EBDD"/>
+        <text x="530" y="326" class="d-t">decoy secret</text>
+        <rect x="712" y="308" width="64" height="26" fill="#F1EBDD"/>
+        <text x="770" y="326" text-anchor="end" class="d-mr">403</text>
+        <path d="M352 270H496" class="d-line" marker-end="url(#arr)"/>
+        <text x="372" y="262" class="d-m">short-lived token</text>
+
+        <!-- outsider -->
+        <rect x="846" y="226" width="96" height="70" class="d-soft"/>
+        <text x="858" y="252" class="d-t">Outside</text>
+        <text x="858" y="272" class="d-m">stolen</text>
+        <text x="858" y="286" class="d-m">token</text>
+        <path d="M846 262H808" class="d-red" marker-end="url(#arr-r)"/>
+        <path d="M822 252l12 20M834 252l-12 20" class="d-red"/>
+        <text x="808" y="316" class="d-mr" text-anchor="start">network deny</text>
+
+        <!-- logging -->
+        <rect x="30" y="420" width="900" height="76" class="d-box"/>
+        <text x="46" y="450" class="d-h">Log Analytics</text>
+        <text x="46" y="474" class="d-m">Key Vault AuditEvent + subscription Activity Log → alerts · KQL hunts for reads, denials, unexpected networks, RBAC changes, log tampering</text>
+        <path d="M650 360V416" class="d-line" marker-end="url(#arr)"/>
+        <path d="M790 108V140H900V416" class="d-line" marker-end="url(#arr)"/>
+        <path d="M205 328V416" class="d-line" marker-end="url(#arr)"/>
+      </svg>
+      <figcaption><b>Fig. 1</b>The lab in one drawing. Delivery authenticates without a stored secret; the workload's identity can read one secret and nothing else; the vault refuses every network but the workload's; every read, denial and permission change lands in the log.</figcaption>
+    </figure>
+
+    <div class="cols">
+      <p class="drop">The usual way to give an application a secret is to give it another secret: a connection string, a client key, a token in an environment variable. Each one is a credential that can be copied. The lab starts from the opposite premise. The workload holds no reusable credential at all. It proves who it is through a managed identity, and Azure hands it a short-lived token in return.</p>
+      <p>That identity has exactly one role assignment — Key Vault Secrets User — scoped not to the vault but to a single secret. A second secret sits beside it in the same vault, a decoy belonging to an imaginary other team. If the boundary is real, reading the decoy must fail.</p>
+      <blockquote class="pull">If the boundary is real, reading the decoy must fail. It does — and the log records the attempt.<cite>Fig. 2, the box score</cite></blockquote>
+      <p>The vault itself refuses network traffic by default. Its firewall denies everything, the trusted-service bypass is off, legacy access policies are gone, and purge protection means a compromised administrator cannot quietly destroy it. Each of those settings is checked by a script after deployment, not by eye; on October 28 every check passed.</p>
+      <h4>Delivery without a secret</h4>
+      <p>Deployment follows the same rule. The pipeline authenticates to Azure through GitHub's OIDC federation, so there is no client secret to leak from the repository, and an attribute-based condition limits the one role the pipeline may grant. Before anything deploys, the build compiles the template and runs 31 tests against it, lints it with security rules treated as errors, scans it with Checkov and searches the entire git history for secrets.</p>
+      <h4>Breaking it on purpose</h4>
+      <p>The lab then attacks itself. Eight adversary-emulation scenarios — among them an insider asking for the machine's token, a hunt for credentials on disk and in memory, server-side request forgery against the identity endpoint, and root on the box — run against a hardened Ubuntu server joined to Azure through Arc.</p>
+      <p>Not every result was clean, and the write-up says so. A stolen token replayed from the same home network still worked. It is recorded as RISK-08, accepted, and covered by detection rather than prevention. The absence of a private endpoint and of Privileged Identity Management are documented the same way: the residual risk, the compensating control, and the paid upgrade that would close it.</p>
+      <h4>Proof that outlasts the demo</h4>
+      <p>What remains is evidence. Every file from the October 28 run is redacted, hashed with SHA-256 and listed in a checksum manifest. Each of 29 NIST SP 800-53 controls is traced to its implementation, the test that exercises it, the evidence that test produced and the threat it answers — and a test fails the build if a threat ever loses its control.</p>
+    </div>
+  </article>
+
+  <aside class="rail" aria-label="Inside this edition">
+    <section>
+      <h3>Inside</h3>
+      <ol class="index">
+        <li><span>A1</span><a href="#nothing-to-steal">Nothing to Steal — a workload with no credential</a></li>
+        <li><span>A2</span><a href="#box-score">Box score: the attacker vs. the identity</a></li>
+        <li><span>A3</span><a href="#no-way-out">A Range With No Way Out</a></li>
+        <li><span>A4</span><a href="#evidence">Opinion: Evidence Is the Product</a></li>
+      </ol>
+    </section>
+
+    <section class="box" id="box-score" aria-labelledby="bs">
+      <h4 id="bs">Fig. 2 · Box score</h4>
+      <p class="sub">Assume breach: an attacker on the workload server, using the machine's own identity. Recorded October 28, 2026.</p>
+      <table>
+        <thead><tr><th scope="col">Attempt</th><th scope="col">Result</th></tr></thead>
+        <tbody>
+          <tr class="ok"><td>Read the app's secret</td><td class="yes">200 · by design</td></tr>
+          <tr><td>Read the decoy secret</td><td class="no">403</td></tr>
+          <tr><td>List secrets</td><td class="no">403</td></tr>
+          <tr><td>Overwrite the secret</td><td class="no">403</td></tr>
+          <tr><td>Delete the secret</td><td class="no">403</td></tr>
+          <tr><td>Read the resource group</td><td class="no">403</td></tr>
+          <tr><td>Grant itself Owner</td><td class="no">403</td></tr>
+          <tr><td>List directory users</td><td class="no">403</td></tr>
+          <tr><td>List resource groups</td><td>200 · none visible</td></tr>
+        </tbody>
+      </table>
+      <p class="note">One allowed, seven refused. Source: evidence/2026-10-28/EVD-013b, SHA-256 listed.</p>
+    </section>
+
+    <section>
+      <h3>By the numbers</h3>
+      <ul class="numbers">
+        <li><b>35%</b><span>more documented security-control coverage</span><small>Practice · 2025–26</small></li>
+        <li><b>25%</b><span>less high-risk misconfiguration exposure</span><small>Practice · 2025–26</small></li>
+        <li><b>20%</b><span>faster incident-response turnaround</span><small>Practice · 2025–26</small></li>
+        <li><b>99.9%</b><span>data availability through backup and recovery</span><small>Practice · 2023–25</small></li>
+        <li><b>40%</b><span>less manual effort through Terraform and PowerShell</span><small>Practice · 2020–22</small></li>
+      </ul>
+    </section>
+
+    <section class="brief">
+      <h3>In brief</h3>
+      <h4>The portfolio checks itself</h4>
+      <p>The main site publishes a SHA-256 hash of the record it is built from and recomputes it in the reader's browser on every visit. If a byte of the record changes after publication, the page says so.</p>
+    </section>
+  </aside>
+</main>
+
+<section class="fold">
+  <article id="no-way-out" aria-labelledby="a3">
+    <p class="kicker">Network · AWS</p>
+    <h2 class="headline second" id="a3">A Range With No Way Out</h2>
+    <p class="deck">Before a single vulnerable machine exists, a cyber range has to prove it cannot reach the internet. So the tests come first.</p>
+    <p class="byline"><span>By Sai Vignesh Rayal</span><span>living-museum-of-cyber-warfare · release pending</span></p>
+
+    <figure>
+      <svg viewBox="0 0 960 470" role="img" aria-labelledby="f3t">
+        <title id="f3t">The sealed AWS range: four subnets inside a VPC, with no internet gateway, NAT gateway or public IP, and flow logs to encrypted storage.</title>
+        <defs>
+          <pattern id="hatch2" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8E2A24" stroke-width="1"/></pattern>
+          <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1B1815"/></marker>
+        </defs>
+        <rect x="30" y="40" width="690" height="400" class="d-box"/>
+        <rect x="30" y="40" width="690" height="400" fill="none" stroke="#1B1815" stroke-width="4" stroke-dasharray="1 0"/>
+        <text x="48" y="70" class="d-h">VPC · 10.66.0.0/16</text>
+        <text x="702" y="70" text-anchor="end" class="d-mr">SEALED</text>
+
+        <rect x="60" y="96" width="300" height="140" class="d-box"/>
+        <text x="78" y="128" class="d-h">Management</text>
+        <text x="78" y="150" class="d-m">10.66.0.0/20</text>
+        <text x="78" y="172" class="d-m">SSM interface endpoints</text>
+        <text x="78" y="190" class="d-m">no bastion · no open port</text>
+
+        <rect x="390" y="96" width="300" height="140" class="d-box"/>
+        <text x="408" y="128" class="d-h">Sensor</text>
+        <text x="408" y="150" class="d-m">10.66.16.0/20</text>
+        <text x="408" y="172" class="d-m">syslog 514 · mirror VXLAN 4789</text>
+        <text x="408" y="190" class="d-m">reserved: Zeek · Suricata</text>
+
+        <rect x="60" y="270" width="300" height="140" class="d-box"/>
+        <text x="78" y="302" class="d-h">Lab</text>
+        <text x="78" y="324" class="d-m">10.66.32.0/20</text>
+        <text x="78" y="346" class="d-m">attacker → target only</text>
+        <text x="78" y="364" class="d-m">no 0.0.0.0/0 in any rule</text>
+
+        <rect x="390" y="270" width="300" height="140" class="d-hatch"/>
+        <rect x="402" y="282" width="230" height="98" fill="#F1EBDD"/>
+        <text x="408" y="302" class="d-h">Quarantine</text>
+        <text x="408" y="324" class="d-m">10.66.48.0/20</text>
+        <text x="408" y="346" class="d-mr">talks to sensor only</text>
+        <text x="408" y="364" class="d-m">every other flow denied</text>
+        <path d="M640 266V240" class="d-line" marker-start="url(#arr2)" marker-end="url(#arr2)"/>
+
+        <!-- refused paths -->
+        <g>
+          <rect x="780" y="70" width="160" height="62" class="d-soft"/><text x="796" y="98" class="d-t">Internet gateway</text><text x="796" y="118" class="d-mr">none</text>
+          <rect x="780" y="160" width="160" height="62" class="d-soft"/><text x="796" y="188" class="d-t">NAT gateway</text><text x="796" y="208" class="d-mr">none</text>
+          <rect x="780" y="250" width="160" height="62" class="d-soft"/><text x="796" y="278" class="d-t">Public address</text><text x="796" y="298" class="d-mr">none</text>
+          <path d="M720 101H778M720 191H778M720 281H778" class="d-red" stroke-dasharray="4 4"/>
+          <path d="M742 92l14 18M756 92l-14 18M742 182l14 18M756 182l-14 18M742 272l14 18M756 272l-14 18" class="d-red"/>
+        </g>
+        <rect x="780" y="350" width="160" height="90" class="d-box"/>
+        <text x="796" y="378" class="d-t">Flow logs</text>
+        <text x="796" y="398" class="d-m">ALL traffic</text>
+        <text x="796" y="414" class="d-m">CloudWatch · KMS</text>
+        <text x="796" y="430" class="d-m">key rotation on</text>
+        <path d="M720 395H776" class="d-line" marker-end="url(#arr2)"/>
+      </svg>
+      <figcaption><b>Fig. 3</b>The range, sealed. Four subnets and no route out; quarantine reaches only the sensors; every flow is logged to encrypted storage. A static check and a Terraform test suite fail the build if any of this stops being true.</figcaption>
+    </figure>
+
+    <div class="cols two">
+      <p class="drop">A practice range for attack and defence has an obvious failure mode: the thing being studied gets out. The Living Museum of Cyber Warfare — a lab for studying historical attacks, protocols and detection — is built so that it cannot. Its rule is written into the repository: no vulnerable machine or exploit scenario is deployed until the guardrail tests pass.</p>
+      <p>The network is an AWS VPC with four subnets — management, sensor, lab and quarantine — and no path out. There is no internet gateway, no NAT gateway and no elastic IP, and no subnet assigns public addresses. Network ACLs admit only traffic that starts and ends inside the VPC; the quarantine subnet may speak only to the sensors. Management runs through Systems Manager endpoints inside the VPC, so there is no bastion to harden and no port to open.</p>
+      <h4>Every packet accounted for</h4>
+      <p>VPC flow logs capture all traffic into a CloudWatch log group encrypted with a rotating key. Security groups are written by role — attacker, target, sensor — and none references 0.0.0.0/0.</p>
+      <h4>Guardrails that execute</h4>
+      <p>A static check fails the build if any configuration so much as declares an internet gateway, a NAT gateway, an elastic IP, a public address or an open CIDR. Terraform's own test framework then plans the network against a mock provider and asserts that the quarantine and sensor subnets exist and that flow logs capture everything. By default the configuration creates nothing at all; the network is built only when it is deliberately switched on.</p>
+      <p>Next on the bench: the sensors themselves — Zeek and Suricata, fed by VPC traffic mirroring from the lab subnet.</p>
+    </div>
+  </article>
+
+  <article class="opinion" id="evidence" aria-labelledby="a4">
+    <p class="kicker">Opinion</p>
+    <h2 class="headline" id="a4">Evidence Is the Product</h2>
+    <p class="byline"><span>Sai Vignesh Rayal</span><span>Column</span></p>
+    <figure>
+      <svg viewBox="0 0 420 120" role="img" aria-labelledby="f4t">
+        <title id="f4t">The evidence chain: control, test, evidence, hash.</title>
+        <defs><marker id="arr4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1B1815"/></marker></defs>
+        <rect x="4" y="34" width="84" height="48" class="d-box"/><text x="46" y="63" text-anchor="middle" class="d-t">Control</text>
+        <rect x="114" y="34" width="84" height="48" class="d-box"/><text x="156" y="63" text-anchor="middle" class="d-t">Test</text>
+        <rect x="224" y="34" width="84" height="48" class="d-box"/><text x="266" y="63" text-anchor="middle" class="d-t">Evidence</text>
+        <rect x="334" y="34" width="82" height="48" class="d-box"/><text x="375" y="63" text-anchor="middle" class="d-t">SHA-256</text>
+        <path d="M88 58H110M198 58H220M308 58H330" class="d-line" marker-end="url(#arr4)"/>
+        <text x="4" y="104" class="d-m">a claim is finished when all four exist</text>
+      </svg>
+      <figcaption><b>Fig. 4</b>The chain behind every statement in this portfolio.</figcaption>
+    </figure>
+    <p>Security work is easy to describe and hard to prove. "Access is least-privilege" is a sentence; a role-assignment export scoped to one secret is a fact. Much of my work in cloud security and compliance has been the patient conversion of the first kind of statement into the second.</p>
+    <p>The chain is short: a control, the test that exercises it, the evidence that test produces, and a hash showing the evidence has not changed since. When a link is missing, the claim is a hope. When all four are present, an assessor can follow the claim without taking anyone's word for it — mine included.</p>
+    <p>That is why the open items are published beside the finished ones. A control register with no gaps has usually not been read closely. Mine lists five, each with an ID. When they close, the evidence will say so.</p>
+  </article>
+</section>
+
+<footer class="colophon">
+  <span>The Boundary is set in Instrument Serif, Source Serif 4 and IBM Plex Mono, self-hosted under the SIL Open Font License. Drawings are hand-built SVG.</span>
+  <span><a href="../">Portfolio</a> · <a href="https://github.com/Saivignesh-1177">GitHub</a> · <a href="mailto:rollasaivigneshrayal@gmail.com">rollasaivigneshrayal@gmail.com</a></span>
+</footer>
+
+</div>
+</body>
+</html>
