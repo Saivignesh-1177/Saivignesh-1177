@@ -6,6 +6,7 @@ Five-plus years across AWS, Azure, GCP and Microsoft 365 — from operating micr
 
 **The full portfolio** — a descent through a cloud estate, one layer at a time: [saivignesh-1177.github.io/Saivignesh-1177/](https://saivignesh-1177.github.io/Saivignesh-1177/)  
 <sub>Read by focus: [Cloud Security](https://saivignesh-1177.github.io/Saivignesh-1177/) · [Identity & Access](https://saivignesh-1177.github.io/Saivignesh-1177/iam/) · [Governance, Risk & Compliance](https://saivignesh-1177.github.io/Saivignesh-1177/grc/) · [DevSecOps](https://saivignesh-1177.github.io/Saivignesh-1177/devsecops/) · [Microsoft Cloud Security](https://saivignesh-1177.github.io/Saivignesh-1177/microsoft/)</sub>
+**Field notes** — [The Boundary](https://saivignesh-1177.github.io/Saivignesh-1177/journal/): newspaper-style articles and drawings from the labs.
 
 <details open>
 <summary><code>01 · IDENTITY</code> <b>Who may enter.</b> — <i>Access is granted narrowly, reviewed on a schedule, and never stored as a secret.</i></summary>

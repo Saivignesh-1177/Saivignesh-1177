@@ -111,6 +111,7 @@ def readme(d):
         "",
         f"**The full portfolio** — a descent through a cloud estate, one layer at a time: [{host}]({SITE})  ",
         f"<sub>Read by focus: {focus_links}</sub>",
+        f"**Field notes** — [The Boundary]({SITE}journal/): newspaper-style articles and drawings from the labs.",
         "",
     ]
     for i, lay in enumerate(d["layers"], 1):
