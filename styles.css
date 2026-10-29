@@ -72,6 +72,11 @@ h2 { font: 400 clamp(3.2rem, 8vw, 7rem)/.92 var(--serif); letter-spacing: -.02em
 .stats .lab { font: 400 .74rem/1.45 var(--mono); color: var(--muted); letter-spacing: .02em; }
 @keyframes fall { 0% { transform: translateY(-4px); opacity: 0; } 40% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
 
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; margin: 2rem 0 0; }
+.cta a { display: inline-block; padding: .85rem 1.25rem; background: var(--paper); color: var(--ink); text-decoration: none; font: 500 .78rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; transition: background .2s; }
+.cta a:hover { background: var(--brass); color: var(--ink); }
+.cta span { font: 400 .8rem/1.5 var(--mono); color: var(--muted); max-width: 44ch; }
+
 /* The work at each layer, on glass over the live field */
 .work { margin: 0 var(--gutter) 0 calc(var(--gutter) + 10rem); padding: clamp(1.75rem, 4vw, 3.5rem); display: grid; grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.4fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; background: rgba(18, 17, 16, .8); backdrop-filter: blur(14px) saturate(110%); -webkit-backdrop-filter: blur(14px) saturate(110%); border: 1px solid var(--rule); }
 .work-head { position: sticky; top: 6rem; }
