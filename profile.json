@@ -1,109 +1,166 @@
 {
   "package": {
     "id": "SVR-01",
-    "title": "Authorization Package",
-    "revision": "1.0",
+    "revision": "3.0",
     "date": "2026-10-28",
-    "note": "Structured like a System Security Plan. Every statement cites its source; outcome figures are as reported in the résumé, not live telemetry."
+    "note": "Every statement cites its source: a period of professional practice or a public repository. Outcome figures are as reported in professional practice, not live telemetry."
   },
   "subject": {
     "name": "Sai Vignesh Rayal",
-    "role": "Cybersecurity Engineer — Cloud Security",
-    "summary": "Five-plus years securing, automating and supporting Azure, AWS and Microsoft 365 — across healthcare research, cloud infrastructure and enterprise endpoint estates. I design access so there is nothing to steal, write the controls as code, and keep the evidence that proves they hold.",
-    "location": "United States · open to relocate",
     "contact": {
       "email": "rollasaivigneshrayal@gmail.com",
       "github": "https://github.com/Saivignesh-1177"
     },
-    "roles_in_scope": [
-      "Cloud Security Engineer",
-      "Identity & Access Management Engineer",
-      "DevSecOps Engineer",
-      "GRC / Security Compliance Engineer",
-      "Microsoft security roles — architecture, operations, identity, Azure security"
-    ],
-    "credentials": [
-      { "name": "Microsoft Certified: Azure Administrator Associate", "type": "certification" },
-      { "name": "Master of Artificial Intelligence — University of North Texas", "type": "education",
-        "detail": "Coursework: Cloud Computing, Networking, Computer Algorithms, Software Development with AI" }
+    "location": "United States · open to relocation",
+    "education": {
+      "name": "Master of Artificial Intelligence — University of North Texas",
+      "detail": "Cloud Computing · Networking · Computer Algorithms · Software Development with AI"
+    },
+    "stats": [
+      { "figure": "5+", "label": "years in cloud engineering and security" },
+      { "figure": "3", "label": "clouds — AWS, Azure, GCP — plus Microsoft 365" },
+      { "figure": "30+", "label": "microservices operated across environments" },
+      { "figure": "500+", "label": "devices managed with Intune and SCCM" }
     ]
   },
+  "focus": {
+    "cloud-security": {
+      "path": "",
+      "label": "Cloud Security",
+      "role": "Cloud Security Engineer",
+      "summary": "Five-plus years across AWS, Azure, GCP and Microsoft 365 — from operating microservices platforms to securing regulated research data and governing cloud risk. I design the boundary, automate it, and keep the evidence that it held.",
+      "lead": ["cloudsec"]
+    },
+    "iam": {
+      "path": "iam",
+      "label": "Identity & Access",
+      "role": "Identity & Access Engineer",
+      "summary": "Five-plus years in cloud engineering and security, centred on who may reach what. I review access against least privilege, build workload identity with no reusable credential, and document every exception until it closes.",
+      "lead": ["iam"]
+    },
+    "grc": {
+      "path": "grc",
+      "label": "Governance, Risk & Compliance",
+      "role": "Cloud Security & GRC Engineer",
+      "summary": "Five-plus years in cloud engineering and security, now focused on governance. I map controls to requirements, assess findings for business impact, and keep audit evidence that an assessor can trace from control to test to result.",
+      "lead": ["grc"]
+    },
+    "devsecops": {
+      "path": "devsecops",
+      "label": "DevSecOps",
+      "role": "DevSecOps Engineer",
+      "summary": "Five-plus years building and securing cloud platforms — microservices on Kubernetes and OpenShift, infrastructure in Terraform, delivery through pipelines that fail when a control fails.",
+      "lead": ["devsecops"]
+    },
+    "microsoft": {
+      "path": "microsoft",
+      "label": "Microsoft Cloud Security",
+      "role": "Microsoft Cloud Security Engineer",
+      "summary": "Five-plus years across Azure and Microsoft 365 — infrastructure, Defender, data loss prevention, Intune and SCCM — with the controls, recovery and evidence that regulated environments require.",
+      "lead": ["microsoft"]
+    }
+  },
   "sources": {
-    "R-UW": { "label": "Résumé · UW–Madison SMPH · 2025–26", "kind": "resume" },
-    "R-KG": { "label": "Résumé · Kgate · 2023–25", "kind": "resume" },
-    "R-TCS": { "label": "Résumé · Tata Consultancy Services · 2020–22", "kind": "resume" },
+    "P26": { "label": "Practice · 2026–present", "kind": "practice" },
+    "P25": { "label": "Practice · 2025–26", "kind": "practice" },
+    "P23": { "label": "Practice · 2023–25", "kind": "practice" },
+    "P20": { "label": "Practice · 2020–22", "kind": "practice" },
     "E-AZ": { "label": "azure-iam-zero-trust-lab", "kind": "repo", "url": "https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab" },
     "E-LM": { "label": "living-museum-of-cyber-warfare", "kind": "repo", "url": "https://github.com/Saivignesh-1177/living-museum-of-cyber-warfare", "released": false }
   },
-  "controls": [
+  "layers": [
     {
+      "id": "identity", "title": "Identity", "question": "Who may enter.",
       "family": "AC · IA", "name": "Identity & Access",
-      "statement": "Workload access built so no reusable credential exists.",
-      "implementation": [
-        { "text": "Managed identity scoped to Key Vault Secrets User on exactly one secret; a decoy secret proves the boundary with a 403.", "src": "E-AZ" },
-        { "text": "Secretless CI/CD through GitHub OIDC, with an ABAC condition limiting which role the pipeline can grant.", "src": "E-AZ" },
-        { "text": "Access-control reviews; cloud solutions integrated securely while supporting researcher access needs.", "src": "R-UW" }
+      "statement": "Access is granted narrowly, reviewed on a schedule, and never stored as a secret.",
+      "scene": "Only verified identities pass the gate. Everything else stops before it reaches the network.", "scene_src": "E-AZ",
+      "tools": ["Least privilege", "Access reviews", "RBAC", "ABAC", "Managed identities", "GitHub OIDC"],
+      "work": [
+        { "text": "Review identity and access assignments against least privilege, document exceptions, and run periodic access reviews with system owners.", "src": "P26", "tags": ["iam", "grc", "cloudsec"] },
+        { "text": "Built workload identity with no reusable credential: a managed identity scoped to a single secret, with a decoy secret that proves the boundary by returning 403.", "src": "E-AZ", "tags": ["iam", "cloudsec", "microsoft"] },
+        { "text": "Removed stored secrets from delivery with GitHub OIDC; an ABAC condition limits the one role the pipeline may grant.", "src": "E-AZ", "tags": ["iam", "devsecops"] }
       ]
     },
     {
-      "family": "SC · CM", "name": "Cloud Boundary & Configuration",
-      "statement": "Networks default-deny; configuration is code and is tested before it exists.",
-      "implementation": [
-        { "text": "Key Vault reachable only from the workload subnet; 31 tests run against the compiled template before deploy.", "src": "E-AZ" },
-        { "text": "Sealed AWS lab network: no internet gateway, no NAT, no public IPs, quarantine subnet, guardrail tests in CI.", "src": "E-LM" },
-        { "text": "Secured Azure VMs, networking and storage while reducing infrastructure cost 15%.", "src": "R-KG" },
-        { "text": "Designed AWS architectures on EC2, EKS, VPC, S3 and RDS with security controls, load balancing and auto-scaling.", "src": "R-TCS" }
+      "id": "network", "title": "Network", "question": "Where it may go.",
+      "family": "SC · CM", "name": "Boundary & Configuration",
+      "statement": "Boundaries default to deny, and configuration is held to a baseline.",
+      "scene": "Four subnets and no route out. Quarantine can only talk to the sensors.", "scene_src": "E-LM",
+      "tools": ["AWS", "Azure", "GCP", "VPC", "EC2", "EKS", "S3", "RDS", "Azure networking", "Hardening baselines"],
+      "work": [
+        { "text": "Review compute, network and storage configuration against security baselines and carry each misconfiguration through remediation with its infrastructure owner.", "src": "P26", "tags": ["cloudsec", "grc"] },
+        { "text": "Designed, deployed and hardened Azure infrastructure — virtual machines, networking and storage — while reducing cost by 15%.", "src": "P23", "tags": ["microsoft", "cloudsec"] },
+        { "text": "Designed AWS architectures across EC2, EKS, VPC, S3 and RDS.", "src": "P20", "tags": ["cloudsec", "devsecops"] },
+        { "text": "Built a sealed AWS range with no internet or NAT path, no public addresses and a quarantine subnet, gated by guardrail tests before any workload exists.", "src": "E-LM", "tags": ["cloudsec", "devsecops"] }
       ]
     },
     {
-      "family": "RA · CA", "name": "Risk & Assessment",
-      "statement": "Find the misconfiguration before an attacker does, and write down what remains.",
-      "implementation": [
-        { "text": "Vulnerability testing and security assessments across infrastructure, access and configuration — high-risk misconfiguration exposure down 25%.", "src": "R-UW" },
-        { "text": "STRIDE threat model (T01–T15), eight adversary-emulation scenarios, findings fixed and re-tested or formally risk-accepted.", "src": "E-AZ" }
+      "id": "workload", "title": "Workload", "question": "What it may run.",
+      "family": "SA · SR", "name": "Platform & Delivery",
+      "statement": "Platforms are built as code and delivered by pipelines that are themselves controls.",
+      "scene": "Probed from inside the workload: one action allowed, seven denied.", "scene_src": "E-AZ",
+      "tools": ["Terraform", "Ansible", "PowerShell", "JSON templates", "Docker", "Kubernetes", "OpenShift", "Jenkins"],
+      "work": [
+        { "text": "Led a six-engineer team operating 30+ microservices through deployment, migration, maintenance and troubleshooting.", "src": "P20", "tags": ["devsecops", "cloudsec"] },
+        { "text": "Migrated microservices from Linux hosts to OpenShift, and from OpenShift to AWS.", "src": "P20", "tags": ["devsecops"] },
+        { "text": "Automated infrastructure with Terraform and PowerShell, cutting manual effort by 40%.", "src": "P20", "tags": ["devsecops", "cloudsec"] },
+        { "text": "Automated Azure deployment with PowerShell and JSON templates, cutting manual effort by 30%.", "src": "P23", "tags": ["microsoft", "devsecops"] },
+        { "text": "Made the pipeline block on security: Bicep lint with security rules as errors, Checkov, Gitleaks across full history, and traceability tests.", "src": "E-AZ", "tags": ["devsecops", "grc"] }
       ]
     },
     {
-      "family": "AU · SI-4 · IR", "name": "Detection & Response",
-      "statement": "Every read, denial and permission change is logged, alerted and rehearsed.",
-      "implementation": [
-        { "text": "KQL hunts for secret reads, denials, unexpected networks, RBAC changes and log tampering; incident runbooks for token theft and escalation.", "src": "E-AZ" },
-        { "text": "Monitored cloud systems for irregular behaviour and supported triage, containment and remediation — response turnaround 20% faster.", "src": "R-UW" },
-        { "text": "VPC flow logs on all traffic to encrypted storage; sensor subnet reserved for Zeek and Suricata.", "src": "E-LM" }
+      "id": "data", "title": "Data", "question": "What it may read.",
+      "family": "SI-2 · AC-4", "name": "Data & Endpoint",
+      "statement": "Sensitive data stays classified and contained, on devices that are patched and compliant.",
+      "scene": "One identity, one secret, one network path to it.", "scene_src": "E-AZ",
+      "tools": ["Microsoft Defender", "Data loss prevention", "Security & Compliance Center", "Microsoft 365", "Intune", "SCCM"],
+      "work": [
+        { "text": "Designed security for regulated research data, improving secure workload onboarding by 30%.", "src": "P25", "tags": ["cloudsec", "grc"] },
+        { "text": "Configured data loss prevention and threat-management policy in the Microsoft Security & Compliance Center.", "src": "P23", "tags": ["microsoft", "cloudsec", "grc"] },
+        { "text": "Administered Microsoft 365 — Exchange Online, SharePoint Online, OneDrive, Teams and Defender — improving platform reliability by 20%.", "src": "P23", "tags": ["microsoft"] },
+        { "text": "Ran SCCM and Intune across 500+ devices: deployment, patching, compliance enforcement and device policy.", "src": "P20", "tags": ["microsoft", "cloudsec"] }
       ]
     },
     {
-      "family": "SA · SR", "name": "DevSecOps & Supply Chain",
-      "statement": "The pipeline is a security control, not a delivery convenience.",
-      "implementation": [
-        { "text": "CI runs Bicep lint with security rules as errors, Checkov, Gitleaks over full history and traceability tests.", "src": "E-AZ" },
-        { "text": "Terraform and PowerShell provisioning — manual effort down 40%, deployments consistent.", "src": "R-TCS" },
-        { "text": "Azure administration automated with PowerShell and JSON templates — manual effort down 30%.", "src": "R-KG" }
+      "id": "detection", "title": "Detection", "question": "What we will see.",
+      "family": "RA · SI-4 · IR", "name": "Risk, Detection & Response",
+      "statement": "Find the weakness before an attacker does; see the attempt when one comes.",
+      "scene": "Every read, denial and permission change is logged and alerted.", "scene_src": "E-AZ",
+      "tools": ["Vulnerability assessment", "Risk analysis", "Threat modelling", "KQL", "Dynatrace", "Datadog", "Grafana", "Nagios"],
+      "work": [
+        { "text": "Reduced high-risk misconfiguration exposure by 25% through vulnerability testing, risk analysis and security assessment of cloud infrastructure.", "src": "P25", "tags": ["cloudsec", "grc"] },
+        { "text": "Assess vulnerability and configuration findings for risk and business impact, and track corrective action through validation and closure.", "src": "P26", "tags": ["grc", "cloudsec"] },
+        { "text": "Monitored cloud environments for threats and supported incident response, improving response turnaround by 20%.", "src": "P25", "tags": ["cloudsec"] },
+        { "text": "Hardened cloud infrastructure and responded to security incidents alongside IT security.", "src": "P23", "tags": ["cloudsec", "microsoft"] },
+        { "text": "Threat-modelled with STRIDE and ran eight adversary-emulation scenarios; each finding was fixed and re-tested or formally risk-accepted.", "src": "E-AZ", "tags": ["cloudsec", "grc", "iam"] }
       ]
     },
     {
-      "family": "SI-2 · AC-4", "name": "Data Protection & Endpoint",
-      "statement": "Regulated data stays classified, contained and on compliant devices.",
-      "implementation": [
-        { "text": "Microsoft Security & Compliance Center policies — DLP and threat-management controls — and Defender across Microsoft 365.", "src": "R-KG" },
-        { "text": "Intune and SCCM across 500+ devices: compliance enforcement, patching, device policy — security incidents down 25%.", "src": "R-TCS" }
-      ]
-    },
-    {
-      "family": "PL · PM · CP", "name": "Governance, Risk & Compliance",
-      "statement": "Controls are mapped, traceable, and a build fails if a threat loses its control.",
-      "implementation": [
-        { "text": "Security requirements and control mappings for healthcare and research platforms — documented control coverage up 35%.", "src": "R-UW" },
-        { "text": "29 NIST SP 800-53 Rev 5 controls mapped to implementation, test, evidence and threat; crosswalk to CSF 2.0, SP 800-207, CIS and MCSB.", "src": "E-AZ" },
-        { "text": "Standards, runbooks, continuity and disaster-recovery procedures — audit readiness and resilience up 30%; HIPAA-aligned and NIST-based practice.", "src": "R-UW" },
-        { "text": "Backup and DR for Azure resources and SQL databases supporting 99.9% availability.", "src": "R-KG" }
+      "id": "evidence", "title": "Evidence", "question": "Proof that it held.",
+      "family": "PL · PM · CP", "name": "Governance & Resilience",
+      "statement": "Controls are mapped to requirements, tested, and recoverable — with evidence an assessor can trace.",
+      "scene": "Controls mapped to tests, tests to evidence, evidence hashed.", "scene_src": "E-AZ",
+      "tools": ["NIST-based controls", "HIPAA-aligned practice", "Control mapping", "Audit evidence", "Business continuity", "Disaster recovery", "Change management"],
+      "work": [
+        { "text": "Map cloud controls to policy and compliance requirements, identify gaps, and maintain risk records and audit evidence through remediation.", "src": "P26", "tags": ["grc"] },
+        { "text": "Defined security requirements and control mappings, increasing documented control coverage by 35%.", "src": "P25", "tags": ["grc", "cloudsec"] },
+        { "text": "Wrote security standards, runbooks and continuity and recovery procedures, improving audit readiness and resilience by 30%.", "src": "P25", "tags": ["grc"] },
+        { "text": "Integrated cloud services across IT, development, research and infrastructure teams, reducing security-review delays by 25%.", "src": "P25", "tags": ["cloudsec", "devsecops"] },
+        { "text": "Delivered backup and disaster recovery for Azure resources and SQL databases, holding 99.9% data availability.", "src": "P23", "tags": ["microsoft", "grc"] },
+        { "text": "Traced 29 NIST SP 800-53 controls from implementation to test, evidence and threat, with tests that fail the build when a threat loses its control.", "src": "E-AZ", "tags": ["grc", "devsecops"] }
       ]
     }
   ],
-  "history": [
-    { "org": "University of Wisconsin–Madison · School of Medicine and Public Health", "title": "Cybersecurity Engineer II / Cloud Security Engineer", "place": "Madison, WI", "from": "Apr 2025", "to": "Apr 2026", "src": "R-UW" },
-    { "org": "Kgate", "title": "Cloud Engineer — Security & Infrastructure", "place": "Houston, TX", "from": "Apr 2023", "to": "Mar 2025", "src": "R-KG" },
-    { "org": "Tata Consultancy Services", "title": "Microsoft Cloud Solution Engineer — Security, Compliance & Endpoint", "place": "Bengaluru, India", "from": "Feb 2020", "to": "Jun 2022", "src": "R-TCS" }
+  "timeline": [
+    { "from": "Jun 2026", "to": "Present", "title": "Cloud Security & GRC Analyst", "scope": "Configuration and access review, risk assessment, control mapping and audit evidence." },
+    { "from": "Apr 2025", "to": "Apr 2026", "title": "Cybersecurity Engineer II · Cloud Security Engineer", "scope": "Security architecture, assessment and response for regulated research data." },
+    { "from": "Apr 2023", "to": "Mar 2025", "title": "Cloud Engineer", "scope": "Azure and Microsoft 365 infrastructure, automation, recovery and data protection." },
+    { "from": "Feb 2020", "to": "Jun 2022", "title": "Microsoft Cloud Solution Engineer", "scope": "Microservices platforms, cloud migration, infrastructure as code and endpoint management." }
+  ],
+  "leadership": [
+    { "text": "Led a six-engineer team responsible for 30+ microservices.", "src": "P20" },
+    { "text": "Mentored engineers on Azure, Microsoft 365 and automation.", "src": "P23" },
+    { "text": "Led client engagement, risk mitigation and delivery, sustaining 95% client satisfaction.", "src": "P23" }
   ],
   "poam": [
     { "id": "EVD-008", "item": "Azure Policy and Defender CSPM report captured as evidence", "src": "E-AZ" },
