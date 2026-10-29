@@ -6,6 +6,7 @@ Five-plus years across AWS, Azure, GCP and Microsoft 365 — from operating micr
 
 **The full portfolio** — a descent through a cloud estate, one layer at a time: [saivignesh-1177.github.io/Saivignesh-1177/](https://saivignesh-1177.github.io/Saivignesh-1177/)  
 <sub>Read by focus: [Cloud Security](https://saivignesh-1177.github.io/Saivignesh-1177/) · [Identity & Access](https://saivignesh-1177.github.io/Saivignesh-1177/iam/) · [Governance, Risk & Compliance](https://saivignesh-1177.github.io/Saivignesh-1177/grc/) · [DevSecOps](https://saivignesh-1177.github.io/Saivignesh-1177/devsecops/) · [Microsoft Cloud Security](https://saivignesh-1177.github.io/Saivignesh-1177/microsoft/)</sub>
+**Try to breach me** — [play the attacker](https://saivignesh-1177.github.io/Saivignesh-1177/breach/) against a real zero-trust lab; every result is replayed from recorded evidence.  
 **Field notes** — [The Boundary](https://saivignesh-1177.github.io/Saivignesh-1177/journal/): newspaper-style articles and drawings from the labs.
 
 <details open>

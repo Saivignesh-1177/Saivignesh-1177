@@ -140,6 +140,7 @@ def render(d, digest, key):
     <p class="role">{e(focus["role"])}</p>
     <p class="summary">{e(focus["summary"])}</p>
     <ul class="stats">{stats}</ul>
+    <p class="cta"><a href="{base}breach/">Try to breach my lab <span aria-hidden="true">→</span></a><span>Play the attacker against a real zero-trust lab. Every result is replayed from recorded evidence.</span></p>
     <p class="cue"><span class="cue-text">A cloud estate is a stack of decisions about trust. Descend through one — each layer holds the work I have done there.</span> <span class="cue-arrow" aria-hidden="true">↓</span></p>
   </div>
 </section>
@@ -168,6 +169,7 @@ def render(d, digest, key):
 <footer class="integrity">
   <p class="focus-nav">Read this record by focus: {others}</p>
   <p class="focus-nav">Field notes: <a href="{base}journal/">The Boundary — articles and drawings from the labs</a></p>
+  <p class="focus-nav">Challenge: <a href="{base}breach/">Try to breach me — play the attacker against recorded evidence</a></p>
   <p>{e(p["note"])}</p>
   <p>Integrity seal · SHA-256 of <a href="{base}profile.json">profile.json</a> <code id="seal" data-src="{base}profile.json" data-digest="{digest}">{digest}</code></p>
   <p id="verify" aria-live="polite">Verification runs in your browser when scripts are enabled.</p>

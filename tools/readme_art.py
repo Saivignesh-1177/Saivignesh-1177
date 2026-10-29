@@ -111,6 +111,7 @@ def readme(d):
         "",
         f"**The full portfolio** — a descent through a cloud estate, one layer at a time: [{host}]({SITE})  ",
         f"<sub>Read by focus: {focus_links}</sub>",
+        f"**Try to breach me** — [play the attacker]({SITE}breach/) against a real zero-trust lab; every result is replayed from recorded evidence.  ",
         f"**Field notes** — [The Boundary]({SITE}journal/): newspaper-style articles and drawings from the labs.",
         "",
     ]

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Try to Breach Me — Sai Vignesh Rayal</title>
+<meta name="description" content="Play the attacker against a real zero-trust lab. Every move replays the recorded result: the response, the control that answered, and what the defender saw.">
+<link rel="canonical" href="https://saivignesh-1177.github.io/Saivignesh-1177/breach/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../breach.css">
+<script src="../breach.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <a class="back" href="../">← Portfolio</a>
+  <a class="back" href="../journal/">The Boundary ↗</a>
+</header>
+
+<main>
+  <section class="intro">
+    <p class="k">Interactive · recorded evidence</p>
+    <h1>Try to breach me.</h1>
+    <p class="lede">You are the attacker. The target is a zero-trust lab I built on Azure: a workload whose identity can read one secret and nothing else. Choose your moves. Every response below is the result recorded when the lab was attacked on October 28, 2026 — not a simulation of what might happen.</p>
+    <ul class="score" aria-live="polite">
+      <li><span id="s-moves">0/15</span>moves made</li>
+      <li><span id="s-held">0</span>blocked by a control</li>
+      <li><span id="s-gained">0</span>secrets obtained</li>
+      <li><span id="s-find">0</span>findings surfaced</li>
+    </ul>
+  </section>
+
+  <div class="board">
+    <nav id="moves" class="console" aria-label="Attacker moves"></nav>
+    <section id="outcome" class="outcome" aria-live="polite"></section>
+  </div>
+
+  <p class="finish-row">
+    <button type="button" id="finish" disabled>Finish and get my scorecard</button>
+    <span>Terminal lines are condensed from the recorded transcripts. Two moves end in real findings — they are shown, not hidden.</span>
+  </p>
+</main>
+
+<div id="card" class="card" role="dialog" aria-modal="true" aria-labelledby="card-h" hidden>
+  <div class="card-inner">
+    <p class="k" id="card-h">Your scorecard</p>
+    <pre id="card-text"></pre>
+    <p class="card-actions"><button type="button" id="copy">Copy scorecard</button> <button type="button" id="close">Close</button></p>
+  </div>
+</div>
+
+<footer class="foot">
+  Lab: <a href="https://github.com/Saivignesh-1177/azure-iam-zero-trust-lab">azure-iam-zero-trust-lab</a> · Evidence redacted and SHA-256 listed · No trackers, no third-party requests.
+</footer>
+</body>
+</html>
